@@ -1,0 +1,16 @@
+{ id:1,  title:"Ephemeral Glow",       cat:"abstract", year:"2024", medium:"Oil on canvas",        size:"120 × 90 cm",
+              img:"./img/001.jpg",
+              paint:['#C0392B','#E67E22','#F39C12','#8E44AD','#2C3E50'] },
+
+{
+    "image_name": "image_1",
+    "content": {
+      "subject": "Dense tree canopy or foliage in full bloom.",
+      "color_scheme": "Dominantly warm reds, oranges, and pinks with dark black/brown branches and small scattered white/blue dots.",
+      "style": "Abstract landscape, heavily textured impressionism.",
+      "tags": [
+        "painting",
+        "abstract"
+      ]
+    }
+  },
