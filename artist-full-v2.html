@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Works</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { inter: ['Inter', 'sans-serif'], oswald: ['Oswald', 'sans-serif'] } } } }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F5F2ED;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F5F2ED
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, .12);
+            border-radius: 3px
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, .25)
+        }
+
+        .masonry {
+            columns: 4;
+            column-gap: 8px
+        }
+
+        @media(max-width:1024px) {
+            .masonry {
+                columns: 3
+            }
+        }
+
+        @media(max-width:640px) {
+            .masonry {
+                columns: 2;
+                column-gap: 6px
+            }
+        }
+
+        .mi {
+            break-inside: avoid;
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(14px);
+            animation: fu .45s ease forwards
+        }
+
+        @media(max-width:640px) {
+            .mi {
+                margin-bottom: 6px
+            }
+        }
+
+        .mi.out {
+            display: none
+        }
+
+        .mi img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform .7s cubic-bezier(.25, .46, .45, .94)
+        }
+
+        .mi:hover img {
+            transform: scale(1.02)
+        }
+
+        @keyframes fu {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .ch {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: #1a1a1a;
+            letter-spacing: .02em
+        }
+
+        .cl {
+            color: #999;
+            transition: color .25s;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 13px
+        }
+
+        .cl:hover {
+            color: #555
+        }
+
+        .cl.on {
+            color: #C0392B;
+            font-weight: 600
+        }
+
+        .fl {
+            color: #999;
+            transition: color .25s;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .06em
+        }
+
+        .fl:hover {
+            color: #555
+        }
+
+        .fl.on {
+            color: #C0392B;
+            font-weight: 600
+        }
+
+        .nl {
+            color: #999;
+            transition: color .25s;
+            font-weight: 600;
+            font-size: 13px
+        }
+
+        .nl:hover {
+            color: #1a1a1a
+        }
+
+        .nl.cur {
+            color: #1a1a1a
+        }
+
+        .dv {
+            height: 1px;
+            background: rgba(0, 0, 0, .08)
+        }
+
+        .lb {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        .lb.on {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .lb .lbi {
+            transform: scale(.97) translateY(8px);
+            transition: transform .4s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .lb.on .lbi {
+            transform: scale(1) translateY(0)
+        }
+
+        .ip {
+            position: relative;
+            overflow: hidden;
+            background: #1a1a1a
+        }
+
+        .ip::before,
+        .ip::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: .5
+        }
+
+        .ip::before {
+            width: 200%;
+            height: 200%;
+            top: -60%;
+            left: -60%;
+            background: var(--pa, #C0392B)
+        }
+
+        .ip::after {
+            width: 160%;
+            height: 160%;
+            bottom: -50%;
+            right: -50%;
+            background: var(--pb, #2C3E50)
+        }
+
+        .ip .p1,
+        .ip .p2,
+        .ip .p3 {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none
+        }
+
+        .ip .p1 {
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            right: -40%;
+            background: var(--pc, #8E44AD);
+            opacity: .35;
+            filter: blur(60px)
+        }
+
+        .ip .p2 {
+            width: 100%;
+            height: 100%;
+            bottom: -20%;
+            left: -20%;
+            background: var(--pd, #E67E22);
+            opacity: .3;
+            filter: blur(60px)
+        }
+
+        .ip .p3 {
+            width: 90%;
+            height: 90%;
+            top: 10%;
+            left: 20%;
+            background: var(--pe, #2980B9);
+            opacity: .2;
+            filter: blur(70px)
+        }
+
+        .ip .ic {
+            position: relative;
+            z-index: 2
+        }
+
+        .la {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(26, 26, 26, .7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background .25s, transform .25s
+        }
+
+        .la:hover {
+            background: rgba(26, 26, 26, .9);
+            transform: translateY(-50%) scale(1.08)
+        }
+
+        .la.pr {
+            left: 12px
+        }
+
+        .la.nx {
+            right: 12px
+        }
+
+        @media(min-width:768px) {
+            .la.pr {
+                left: 20px
+            }
+
+            .la.nx {
+                right: 20px
+            }
+        }
+
+        .ep {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        .ep.on {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .ep .ei {
+            transform: scale(.96) translateY(12px);
+            transition: transform .4s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .ep.on .ei {
+            transform: scale(1) translateY(0)
+        }
+
+        .fi {
+            width: 100%;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, .12);
+            padding: 11px 13px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #1a1a1a;
+            transition: border-color .25s;
+            outline: none
+        }
+
+        .fi:focus {
+            border-color: #C0392B
+        }
+
+        .fi::placeholder {
+            color: #bbb
+        }
+
+        .fs {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px
+        }
+
+        .br {
+            background: #C0392B;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: .02em;
+            padding: 11px 28px;
+            border: none;
+            cursor: pointer;
+            transition: background .25s
+        }
+
+        .br:hover {
+            background: #A93226
+        }
+
+        .bs {
+            background: #C0392B;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            padding: 9px 18px;
+            border: none;
+            cursor: pointer;
+            transition: background .25s
+        }
+
+        .bs:hover {
+            background: #A93226
+        }
+
+        .bo {
+            background: transparent;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            padding: 9px 18px;
+            border: 1px solid rgba(255, 255, 255, .25);
+            cursor: pointer;
+            transition: all .25s
+        }
+
+        .bo:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .mm {
+            transform: translateX(100%);
+            transition: transform .4s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .mm.open {
+            transform: translateX(0)
+        }
+
+        .ftl {
+            color: #999;
+            transition: color .25s
+        }
+
+        .ftl:hover {
+            color: #fff
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #1a1a1a;
+            color: #fff;
+            padding: 14px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 200;
+            opacity: 0;
+            transition: opacity .3s, transform .3s;
+            pointer-events: none
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0)
+        }
+
+        .ub {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2C3E50 100%);
+            position: relative;
+            overflow: hidden
+        }
+
+        .ub::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+        }
+    </style>
+</head>
+
+<body class="font-inter">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#F5F2ED]/92 backdrop-blur-md">
+        <div class="max-w-[1440px] mx-auto px-5 md:px-10 h-14 flex items-center justify-between">
+            <a href="#"
+                class="font-oswald text-4xl font-bold tracking-[-.02em] text-[#1a1a1a] hover:text-[#C0392B] transition-colors">Tạ
+                Đình Khiêm</a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#works" class="nl cur">Selected Works</a>
+                <a href="#resume" class="nl">Resume</a>
+                <a href="#contact" class="nl">Contact</a>
+            </nav>
+            <button id="menuBtn" class="md:hidden text-[#999] hover:text-[#1a1a1a] transition-colors"><iconify-icon
+                    icon="lucide:menu" width="22"></iconify-icon></button>
+        </div>
+        <div class="dv"></div>
+    </header>
+
+    <div id="mobileMenu" class="mm fixed inset-0 z-[60] bg-[#F5F2ED] flex flex-col items-center justify-center gap-8">
+        <button id="closeMenu"
+            class="absolute top-4 right-5 text-[#999] hover:text-[#1a1a1a] transition-colors"><iconify-icon
+                icon="lucide:x" width="24"></iconify-icon></button>
+        <a href="#works" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] ml">Selected Works</a>
+        <a href="#resume" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] ml">Resume</a>
+        <a href="#contact" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] ml">Contact</a>
+    </div>
+
+    <main class="pt-[58px]">
+
+        <!-- Upcoming Exhibition -->
+        <section class="ub">
+            <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-10 md:py-14 relative z-10">
+                <p class="text-[#C0392B] text-[11px] font-bold uppercase tracking-[.15em] mb-3">Upcoming Exhibition</p>
+                <h2 class="font-oswald text-2xl md:text-4xl font-bold text-white tracking-tight mb-3">Chromatic
+                    Entanglements</h2>
+                <p class="text-white/60 text-sm md:text-[15px] leading-relaxed max-w-xl mb-5">A solo exhibition
+                    exploring the tension between figuration and abstraction through vivid color fields, serpentine
+                    forms, and layered narratives. Featuring new works from 2025–2026.</p>
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px]">
+                    <span class="text-white/90 font-semibold flex items-center gap-1.5"><iconify-icon
+                            icon="lucide:calendar" width="14" class="text-[#C0392B]"></iconify-icon>17 October
+                        2026</span>
+                    <span class="text-white/50 font-medium flex items-center gap-1.5"><iconify-icon
+                            icon="lucide:map-pin" width="14" class="text-[#C0392B]"></iconify-icon>Hanoi, Vietnam</span>
+                    <span class="text-white/50 font-medium flex items-center gap-1.5"><iconify-icon icon="lucide:clock"
+                            width="14" class="text-[#C0392B]"></iconify-icon>Opening 6–9 PM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <section id="works" class="max-w-[1440px] mx-auto px-5 md:px-10 pt-7 pb-4">
+            <div class="space-y-2.5">
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                    <span class="ch mr-1">Paintings</span>
+                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="cl px-1.5 py-0.5" data-fc="abstract">Abstract</span>
+                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="cl px-1.5 py-0.5" data-fc="portrait">Portrait</span>
+                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="cl px-1.5 py-0.5" data-fc="landscape">Landscape</span>
+                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="cl px-1.5 py-0.5" data-fc="zodiac">Animals &amp; Zodiac</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                    <span class="ch mr-1">Sculptures</span>
+                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="cl px-1.5 py-0.5" data-fc="sculpt-animal">Animals</span>
+                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="cl px-1.5 py-0.5" data-fc="sculpt-furniture">Furnitures</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                    <!-- <span class="text-[#1a1a1a] text-[12px] font-bold tracking-[.1em] mr-1">Year</span> -->
+                    <span class="ch mr-1">Year</span>
+                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="fl px-1.5 py-0.5" data-fy="2026">2026</span>
+                    <span class="fl px-1.5 py-0.5" data-fy="2025">2025</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                    <!-- <span class="text-[#bbb] text-[12px] font-bold tracking-[.1em] mr-1">Medium</span> -->
+                    <span class="ch mr-1">Medium</span>
+                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="fl px-1.5 py-0.5" data-fm="Oil on canvas">Oil on Canvas</span>
+                    <span class="fl px-1.5 py-0.5" data-fm="Oil on wood">Oil on Wood</span>
+                    <span class="fl px-1.5 py-0.5" data-fm="Mixed media">Mixed Media</span>
+                </div>
+            </div>
+        </section>
+        <div class="dv max-w-[1440px] mx-auto"></div>
+
+        <!-- Gallery -->
+        <section class="max-w-[1440px] mx-auto px-5 md:px-10 py-6">
+            <div class="masonry" id="gal"></div>
+            <div id="emp" class="hidden py-24 text-center">
+                <p class="text-[#bbb] text-sm">No works match the selected filters.</p>
+            </div>
+        </section>
+
+        <!-- Resume -->
+        <section id="resume" class="bg-[#EDEAE5]">
+            <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-16 md:py-20">
+                <h2 class="font-oswald text-3xl md:text-4xl font-bold tracking-tight mb-12 text-[#1a1a1a]">About</h2>
+
+                <!-- Artist portrait + quote -->
+                <div class="grid md:grid-cols-[280px_1fr] gap-10 md:gap-14 mb-16">
+                    <div class="aspect-[3/4] bg-[#D5D0C8] overflow-hidden flex-shrink-0">
+                        <img src="https://z-cdn-media.chatglm.cn/files/54ba422c-b4bf-478c-8c98-74985f8f2114.jpg?auth_key=1883080194-9b0b7a00d5b3437ab71ca2c5b6d3f06d-0-c387dc10673f35275bd7cb42a4d241a6"
+                            alt="Artist" class="w-full h-full object-cover grayscale contrast-110 opacity-80">
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <blockquote
+                            class="font-oswald text-xl md:text-2xl font-medium leading-relaxed text-[#444] border-l-2 border-[#C0392B] pl-6 mb-8">
+                            "Color is not something we see — it is something we feel. Each stroke is a conversation
+                            between chaos and control."</blockquote>
+                        <div class="space-y-4 text-sm text-[#666] leading-relaxed">
+                            <p>Born in 1976, he spent most of his time working in his studio in Hanoi. Working primarily
+                                in oil and mixed media, the practice explores the boundary
+                                between figuration and pure abstraction — where serpentine forms, layered color fields,
+                                and fragmented portraits emerge from dense, tactile surfaces.</p>
+                            <p>Recent work draws on zodiac symbolism, natural landscapes, and the human figure as entry
+                                points into emotionally charged compositions that resist singular interpretation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dv mb-14"></div>
+
+                <!-- Studio -->
+                <div class="mb-16">
+                    <h3 class="font-oswald text-xl font-bold tracking-tight mb-6 text-[#1a1a1a]">Studio</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="aspect-[4/3] bg-[#D5D0C8] overflow-hidden"><img
+                                src="https://z-cdn-media.chatglm.cn/files/4e08b5ab-0acb-44da-9bf9-596d297bdfd8.jpg?auth_key=1883080194-8fad21d717654ce8971a6dd4a4e3554a-0-fccf2784b90c9a1ebaae9c14d878c365"
+                                alt="Studio"
+                                class="w-full h-full object-cover opacity-70 hover:opacity-90 transition-opacity duration-500">
+                        </div>
+                        <div class="aspect-[4/3] bg-[#D5D0C8] overflow-hidden"><img
+                                src="https://z-cdn-media.chatglm.cn/files/10837191-a546-4a42-b756-31c80c2e6c0d.jpg?auth_key=1883080194-b38e08549b984ed2bcd1e677a4da01a2-0-177d7dd1fb57a58d525cc7eaafb9e87e"
+                                alt="Studio"
+                                class="w-full h-full object-cover opacity-70 hover:opacity-90 transition-opacity duration-500">
+                        </div>
+                        <div class="aspect-[4/3] bg-[#D5D0C8] overflow-hidden"><img
+                                src="https://z-cdn-media.chatglm.cn/files/6383b5b0-5266-4fba-bae5-473a474a9531.jpg?auth_key=1883080194-2f14f723540141a4b135b7a403f0fde6-0-3515100476a0485ffc94ee3a87d2fecb"
+                                alt="Studio"
+                                class="w-full h-full object-cover opacity-70 hover:opacity-90 transition-opacity duration-500">
+                        </div>
+                    </div>
+                    <p class="text-sm text-[#888] mt-4 leading-relaxed max-w-2xl">The studio in Hanoi houses
+                        large-scale canvases, wood panels, and an extensive pigment collection. Works are developed in
+                        series, often over several months, allowing layers to build organically.</p>
+                </div>
+                <div class="dv mb-14"></div>
+
+                <!-- Education -->
+                <div class="mb-16">
+                    <h3 class="font-oswald text-xl font-bold tracking-tight mb-6 text-[#1a1a1a]">Education</h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2016 – 2018</span>
+                            <div>
+                                <p class="font-semibold text-[#1a1a1a]">MFA, Fine Arts</p>
+                                <p class="text-[#888]">École des Beaux-Arts de Paris — Painting &amp; Mixed Media</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2012 – 2016</span>
+                            <div>
+                                <p class="font-semibold text-[#1a1a1a]">BFA, Oil Painting</p>
+                                <p class="text-[#888]">Academy of Fine Arts, Hanoi
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2015</span>
+                            <div>
+                                <p class="font-semibold text-[#1a1a1a]">Exchange Programme</p>
+                                <p class="text-[#888]">Slade School of Fine Art, London — Contemporary Painting
+                                    Practices</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dv mb-14"></div>
+
+                <!-- Exhibitions -->
+                <div>
+                    <h3 class="font-oswald text-xl font-bold tracking-tight mb-6 text-[#1a1a1a]">Selected Exhibitions
+                    </h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2026 (Upcoming)</span>
+                            <div>
+                                <p class="font-semibold text-[#1a1a1a]">Chromatic Entanglements <span
+                                        class="text-[#888] font-normal">(Solo)</span></p>
+                                <p class="text-[#888]">Hanoi, Vietnam — 17 October 2026</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2025</span>
+                            <div>
+                                <p class="font-semibold text-[#1a1a1a]">Serpentine Dreams <span
+                                        class="text-[#888] font-normal">(Solo)</span></p>
+                                <p class="text-[#888]">White Cube, Hong Kong</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2024</span>
+                            <div>
+                                <p class="font-semibold text-[#1a1a1a]">Between Realms <span
+                                        class="text-[#888] font-normal">(Group)</span></p>
+                                <p class="text-[#888]">White Cube, London — Curated by Hans Ulrich Obrist</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2022</span>
+                            <div>
+                                <p class="font-semibold text-[#1a1a1a]">New Horizons <span
+                                        class="text-[#888] font-normal">(Group)</span></p>
+                                <p class="text-[#888]">Art Basel, Hong Kong — Discoveries Sector</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2021</span>
+                            <div>
+                                <p class="font-semibold text-[#1a1a1a]">Emergent Voices <span
+                                        class="text-[#888] font-normal">(Group)</span></p>
+                                <p class="text-[#888]">National Art Museum of Vietnam</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Enquiry section -->
+    <section id="enquiry" class="bg-[#E5E2DC]">
+        <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-16 md:py-20">
+            <h2 class="font-oswald text-3xl font-bold tracking-tight mb-2 text-[#1a1a1a]">Enquiry</h2>
+            <p class="text-[#999] text-sm mb-10">Interested in a work? Let us know and we'll get back to you shortly.
+            </p>
+            <form id="eqFormBot" class="grid md:grid-cols-2 gap-5 max-w-3xl">
+                <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Name
+                        *</label><input type="text" class="fi" placeholder="Your name" required></div>
+                <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Email
+                        *</label><input type="email" class="fi" placeholder="your@email.com" required></div>
+                <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Artwork of
+                        Interest</label><select id="aSel" class="fi fs">
+                        <option value="">— Select a work —</option>
+                    </select></div>
+                <div><label
+                        class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Phone</label><input
+                        type="tel" class="fi" placeholder="+1 (555) 000-0000"></div>
+                <div class="md:col-span-2"><label
+                        class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Message / Asking
+                        Price</label><textarea class="fi" rows="5"
+                        placeholder="Please describe your interest, ask about pricing, or leave any questions..."></textarea>
+                </div>
+                <div class="md:col-span-2"><button type="submit" class="br">Send Enquiry</button></div>
+            </form>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-[#1a1a1a]">
+        <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-8">
+            <div class="flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px]">
+                <p>Copyright 2026</p>
+                <a href="#" class="ftl flex items-center gap-2"><iconify-icon icon="lucide:facebook"
+                        width="16"></iconify-icon>Facebook</a>
+                <a href="mailto:artist@example.com" class="ftl flex items-center gap-2"><iconify-icon icon="lucide:mail"
+                        width="16"></iconify-icon>Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lb" class="lb fixed inset-0 z-[70] bg-[#F5F2ED] flex flex-col">
+        <div class="flex items-center justify-between px-4 md:px-8 h-14 flex-shrink-0">
+            <span id="lbCt" class="text-[#999] text-[13px] font-medium tabular-nums"></span>
+            <button id="clLb" class="text-[#999] hover:text-[#1a1a1a] transition-colors"><iconify-icon icon="lucide:x"
+                    width="24"></iconify-icon></button>
+        </div>
+        <div class="flex-1 flex flex-col md:flex-row items-stretch overflow-hidden min-h-0">
+            <div class="relative flex-1 flex items-center justify-center px-2 md:px-4 pb-2 md:pb-0 min-h-0">
+                <button id="lbP" class="la pr"><iconify-icon icon="lucide:chevron-left"
+                        width="22"></iconify-icon></button>
+                <img id="lbIm" src="" alt="" class="max-w-full max-h-full object-contain select-none px-10">
+                <button id="lbN" class="la nx"><iconify-icon icon="lucide:chevron-right"
+                        width="22"></iconify-icon></button>
+            </div>
+            <div id="lbI"
+                class="ip w-full md:w-[310px] lg:w-[350px] flex-shrink-0 flex flex-col justify-between p-6 md:p-8 text-white">
+                <div class="p1"></div>
+                <div class="p2"></div>
+                <div class="p3"></div>
+                <div class="ic">
+                    <h3 id="lbTi" class="font-oswald text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-6">
+                    </h3>
+                    <div class="space-y-4 text-[13px]">
+                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.15em]">Year</span>
+                            <p id="lbYr" class="text-white/90 mt-1 font-medium"></p>
+                        </div>
+                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.15em]">Medium</span>
+                            <p id="lbMd" class="text-white/90 mt-1 font-medium"></p>
+                        </div>
+                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.15em]">Size</span>
+                            <p id="lbSz" class="text-white/90 mt-1 font-medium"></p>
+                        </div>
+                        <div><span
+                                class="text-white/40 text-[10px] font-bold uppercase tracking-[.15em]">Category</span>
+                            <p id="lbCa" class="text-white/90 mt-1 font-medium"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ic mt-8 space-y-4">
+                    <button id="lbEq" class="bs w-full">Enquire About This Work</button>
+                    <div class="flex items-center justify-between text-[12px]">
+                        <button id="lbPT"
+                            class="text-white/50 hover:text-white transition-colors font-medium flex items-center gap-1"><iconify-icon
+                                icon="lucide:arrow-left" width="14"></iconify-icon> Prev</button>
+                        <button id="lbNT"
+                            class="text-white/50 hover:text-white transition-colors font-medium flex items-center gap-1">Next
+                            <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enquiry Popup -->
+    <div id="eqP" class="ep fixed inset-0 z-[80] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="ei bg-[#F5F2ED] w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between px-6 pt-6 pb-4">
+                <h3 class="font-oswald text-xl font-bold tracking-tight">Enquiry</h3>
+                <button id="clEq" class="text-[#999] hover:text-[#1a1a1a] transition-colors"><iconify-icon
+                        icon="lucide:x" width="22"></iconify-icon></button>
+            </div>
+            <div class="px-6 pb-6">
+                <p id="eqAr" class="text-[13px] text-[#C0392B] font-semibold mb-5"></p>
+                <form id="eqF" class="space-y-4">
+                    <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Name
+                            *</label><input type="text" class="fi" required></div>
+                    <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Email
+                            *</label><input type="email" class="fi" required></div>
+                    <div><label
+                            class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Phone</label><input
+                            type="tel" class="fi"></div>
+                    <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Message
+                            / Asking Price</label><textarea class="fi" rows="4"
+                            placeholder="I'm interested in this work. Could you please provide pricing and availability?"></textarea>
+                    </div>
+                    <div class="flex gap-3 pt-2">
+                        <button type="submit" class="br flex-1">Send Enquiry</button>
+                        <button type="button" id="cnEq" class="bo flex-1">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Enquiry sent successfully!</div>
+
+    <script>
+        const D = [
+            {
+                id: 1, t: "Ephemeral Glow", c: "abstract", y: "2025", m: "Oil on canvas", s: "120 × 90 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/7e4b51a4-75f1-4eb2-bbc7-0be7da58c97c.jpg?auth_key=1883056714-a0e1b920dd7d477bbb8e6c346b0e8ca6-0-f7240110edbd97f602985567edc2bbfe",
+                p: ['#C0392B', '#E67E22', '#F39C12', '#8E44AD', '#2C3E50']
+            },
+            {
+                id: 2, t: "Chromatic Drift", c: "abstract", y: "2025", m: "Oil on canvas", s: "100 × 100 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/c59ad9e5-fbcc-453d-9213-8470e5672199.jpg?auth_key=1883056714-482db957bcf74dc29b6e66dac5312415-0-cfdd17c0881444195f180539f87644da",
+                p: ['#6C3483', '#2471A3', '#1E8449', '#784212', '#566573']
+            },
+            {
+                id: 3, t: "Silent Resonance", c: "abstract", y: "2025", m: "Oil on canvas", s: "150 × 100 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/294ca888-08fe-430f-a93c-66a574a00e89.jpg?auth_key=1883056714-84849db05de1478e95b4aa4578d805a8-0-a4b103fd3b1a6aca75df08f143ec272f",
+                p: ['#922B21', '#E67E22', '#7D3C98', '#2E86C1', '#1B1B1B']
+            },
+            {
+                id: 4, t: "Dripping Spectrum", c: "abstract", y: "2026", m: "Mixed media", s: "130 × 90 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/10837191-a546-4a42-b756-31c80c2e6c0d.jpg?auth_key=1883080194-b38e08549b984ed2bcd1e677a4da01a2-0-177d7dd1fb57a58d525cc7eaafb9e87e",
+                p: ['#E91E8C', '#C0392B', '#27AE60', '#1A1A1A', '#F48FB1']
+            },
+            {
+                id: 5, t: "Mysterious Waters", c: "abstract", y: "2025", m: "Oil on canvas", s: "120 × 80 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/4e08b5ab-0acb-44da-9bf9-596d297bdfd8.jpg?auth_key=1883080194-8fad21d717654ce8971a6dd4a4e3554a-0-fccf2784b90c9a1ebaae9c14d878c365",
+                p: ['#1B4F72', '#1E8449', '#1A1A1A', '#E74C3C', '#F9E79F']
+            },
+            {
+                id: 6, t: "Standing Together", c: "portrait", y: "2025", m: "Oil on canvas", s: "90 × 120 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/a9c41bc5-8dc5-44bf-877e-9972ea2992e1.jpg?auth_key=1883080194-e8e0f4abde024191bd8fd3884db43652-0-a4e3f56b96ffdec99176afaa7464143d",
+                p: ['#E67E22', '#F1C40F', '#1B1B1B', '#2C3E50', '#D35400']
+            },
+            {
+                id: 7, t: "The Seer", c: "portrait", y: "2025", m: "Oil on canvas", s: "80 × 100 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/54ba422c-b4bf-478c-8c98-74985f8f2114.jpg?auth_key=1883080194-9b0b7a00d5b3437ab71ca2c5b6d3f06d-0-c387dc10673f35275bd7cb42a4d241a6",
+                p: ['#C0392B', '#1B1B1B', '#784212', '#F5CBA7', '#2C3E50']
+            },
+            {
+                id: 8, t: "Encounter", c: "portrait", y: "2026", m: "Oil on canvas", s: "100 × 80 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/24aca48f-72a6-4e52-9817-8c69db4d8b9b.jpg?auth_key=1883080194-b326fdc5173e45f399112713dfbad832-0-2be06cf8421c34c238b8364140264d87",
+                p: ['#2E86C1', '#1B1B1B', '#F5F0E8', '#7F8C8D', '#34495E']
+            },
+            {
+                id: 9, t: "Winter Branches", c: "landscape", y: "2025", m: "Oil on canvas", s: "150 × 100 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/6383b5b0-5266-4fba-bae5-473a474a9531.jpg?auth_key=1883080194-2f14f723540141a4b135b7a403f0fde6-0-3515100476a0485ffc94ee3a87d2fecb",
+                p: ['#5D6D7E', '#1A1A1A', '#C0392B', '#D4A76A', '#784212']
+            },
+            {
+                id: 10, t: "Reflected Horizons", c: "landscape", y: "2025", m: "Oil on canvas", s: "140 × 90 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/7f0fa5ad-8336-4b0e-bdd6-229d2f8aa652.jpg?auth_key=1883080194-7710c3c113244f8b803583b5e5e6b371-0-5cf1a3da2830b46e8e273b10b52582d1",
+                p: ['#E67E22', '#F39C12', '#2C3E50', '#1A5276', '#85C1E9']
+            },
+            {
+                id: 11, t: "Winding Forms", c: "zodiac", y: "2025", m: "Oil on canvas", s: "100 × 120 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/e09926f5-28d5-44d5-82d1-98fe58a9336e.jpg?auth_key=1883056714-c82dfd0edcd5422eb00d9393b481bfaf-0-288988e7c4cb028e336ec3da06829e51",
+                p: ['#F1C40F', '#E91E8C', '#27AE60', '#8E44AD', '#6B8E6B']
+            },
+            {
+                id: 12, t: "Crimson Serpent", c: "zodiac", y: "2025", m: "Oil on canvas", s: "90 × 120 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/c15d5930-31ae-4642-9554-0b6559023029.jpg?auth_key=1883056714-50963855030840c9ab2593a2a02e19c4-0-e82cad52c65521a67fef7116b5b4c452",
+                p: ['#C0392B', '#1ABC9C', '#F1C40F', '#2E86C1', '#1A1A1A']
+            },
+            {
+                id: 13, t: "Entwined Serpents", c: "zodiac", y: "2025", m: "Oil on canvas", s: "110 × 80 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/6a00b5aa-bf4f-4724-afbe-4d5242a94dbe.jpg?auth_key=1883080194-c34adfd356fa451aa01c6637dede1930-0-a45c4681efb2fc6a6673deb31725216c",
+                p: ['#8E44AD', '#E67E22', '#784212', '#6C3483', '#BDC3C7']
+            },
+            {
+                id: 14, t: "Serpent Mandala", c: "zodiac", y: "2025", m: "Oil on wood", s: "Ø 80 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/90debd41-13dc-444f-a05e-31200aab2138.jpg?auth_key=1883080194-72452fa03acd46779a80b31bc2a22ada-0-e57b2c542617d93ef6ace1fca39ed776",
+                p: ['#27AE60', '#C0392B', '#2E86C1', '#F1C40F', '#8E44AD']
+            },
+            {
+                id: 15, t: "Blue Duality", c: "zodiac", y: "2025", m: "Oil on wood", s: "Ø 80 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/6d396fbd-ac20-47d2-959d-8f1dbfc246ad.jpg?auth_key=1883080194-e3cb99abaa3e4c0ab9d7d286ef91a629-0-2d5895ace9ac955ee03877de37ccf8e9",
+                p: ['#1B4F72', '#27AE60', '#F1C40F', '#8E44AD', '#0D3B66']
+            },
+            {
+                id: 16, t: "Khirim", c: "zodiac", y: "2025", m: "Oil on canvas", s: "130 × 90 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/db579d98-4384-4b15-9197-b9ea25ba2337.jpg?auth_key=1883056714-4240f1766e0c4da890164e10e5b49fdf-0-3ee36cee690998e94777ca1b453b7ee4",
+                p: ['#9B59B6', '#E91E8C', '#2E86C1', '#1A1A1A', '#5B2C6F']
+            },
+            {
+                id: 17, t: "Color Fields", c: "zodiac", y: "2026", m: "Mixed media", s: "120 × 90 cm",
+                u: "https://z-cdn-media.chatglm.cn/files/b33be868-9b09-44fd-9bc8-287b9e6bcc46.jpg?auth_key=1883056714-af1c3c29a12a4a7cb8958b56f09be60e-0-5042acb6e945415ef4ab47dc4df9a2ec",
+                p: ['#F1C40F', '#2E86C1', '#27AE60', '#8E44AD', '#1A1A1A']
+            }
+        ];
+
+        const CL = { 'abstract': 'Painting — Abstract', 'portrait': 'Painting — Portrait', 'landscape': 'Painting — Landscape', 'zodiac': 'Painting — Animals & Zodiac', 'sculpt-animal': 'Sculpture — Animals', 'sculpt-furniture': 'Sculpture — Furnitures' };
+
+        // Gallery render
+        const gal = document.getElementById('gal'), emp = document.getElementById('emp');
+        gal.innerHTML = D.map((a, i) => `<div class="mi" data-c="${a.c}" data-y="${a.y}" data-m="${a.m}" data-id="${a.id}" style="animation-delay:${i * 30}ms"><div class="cursor-pointer" onclick="oLb(${a.id})"><img src="${a.u}" alt="${a.t}" loading="lazy" draggable="false"></div></div>`).join('');
+
+        // Dropdown
+        const aS = document.getElementById('aSel');
+        D.forEach(a => { const o = document.createElement('option'); o.value = a.id; o.textContent = `${a.t} (${a.y})`; aS.appendChild(o) });
+
+        // Filters — toggle behavior, no "All"
+        let fC = null, fY = null, fM = null;
+        const cL = document.querySelectorAll('[data-fc]'), yL = document.querySelectorAll('[data-fy]'), mL = document.querySelectorAll('[data-fm]');
+        cL.forEach(l => l.addEventListener('click', () => { fC = fC === l.dataset.fc ? null : l.dataset.fc; cL.forEach(x => x.classList.toggle('on', x.dataset.fc === fC)); dF() }));
+        yL.forEach(l => l.addEventListener('click', () => { fY = fY === l.dataset.fy ? null : l.dataset.fy; yL.forEach(x => x.classList.toggle('on', x.dataset.fy === fY)); dF() }));
+        mL.forEach(l => l.addEventListener('click', () => { fM = fM === l.dataset.fm ? null : l.dataset.fm; mL.forEach(x => x.classList.toggle('on', x.dataset.fm === fM)); dF() }));
+
+        function dF() {
+            let n = 0;
+            gal.querySelectorAll('.mi').forEach(it => {
+                const ok = (!fC || it.dataset.c === fC) && (!fY || it.dataset.y === fY) && (!fM || it.dataset.m === fM);
+                it.classList.toggle('out', !ok); if (ok) n++;
+            });
+            emp.classList.toggle('hidden', n > 0);
+        }
+
+        function gF() { return D.filter(a => (!fC || a.c === fC) && (!fY || a.y === fY) && (!fM || a.m === fM)) }
+
+        // Lightbox
+        const lbE = document.getElementById('lb'), lbIm = document.getElementById('lbIm'), lbTi = document.getElementById('lbTi'), lbYr = document.getElementById('lbYr'), lbMd = document.getElementById('lbMd'), lbSz = document.getElementById('lbSz'), lbCa = document.getElementById('lbCa'), lbCt = document.getElementById('lbCt'), lbI = document.getElementById('lbI');
+        let lF = [], lI = 0;
+
+        function sP(c) { lbI.style.setProperty('--pa', c[0]); lbI.style.setProperty('--pb', c[1]); lbI.style.setProperty('--pc', c[2]); lbI.style.setProperty('--pd', c[3]); lbI.style.setProperty('--pe', c[4]) }
+        function sI() { const a = lF[lI]; if (!a) return; lbIm.src = a.u; lbIm.alt = a.t; lbTi.textContent = a.t; lbYr.textContent = a.y; lbMd.textContent = a.m; lbSz.textContent = a.s; lbCa.textContent = CL[a.c]; lbCt.textContent = `${lI + 1} / ${lF.length}`; sP(a.p) }
+        function oLb(id) { lF = gF(); lI = lF.findIndex(a => a.id === id); if (lI < 0) lI = 0; sI(); lbE.classList.add('on'); document.body.style.overflow = 'hidden' }
+        function cLb() { lbE.classList.remove('on'); document.body.style.overflow = '' }
+        function gP() { lI = (lI - 1 + lF.length) % lF.length; sI() }
+        function gN() { lI = (lI + 1) % lF.length; sI() }
+
+        document.getElementById('clLb').addEventListener('click', cLb);
+        document.getElementById('lbP').addEventListener('click', gP);
+        document.getElementById('lbN').addEventListener('click', gN);
+        document.getElementById('lbPT').addEventListener('click', gP);
+        document.getElementById('lbNT').addEventListener('click', gN);
+
+        // Enquiry popup
+        const eqP = document.getElementById('eqP'), eqAr = document.getElementById('eqAr');
+        document.getElementById('lbEq').addEventListener('click', () => { const a = lF[lI]; if (!a) return; eqAr.textContent = `Re: ${a.t} (${a.y}) — ${a.m}, ${a.sz}`; eqP.classList.add('on') });
+        document.getElementById('clEq').addEventListener('click', () => eqP.classList.remove('on'));
+        document.getElementById('cnEq').addEventListener('click', () => eqP.classList.remove('on'));
+        eqP.addEventListener('click', e => { if (e.target === eqP) eqP.classList.remove('on') });
+
+        function sT() { const t = document.getElementById('toast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000) }
+        document.getElementById('eqF').addEventListener('submit', e => { e.preventDefault(); eqP.classList.remove('on'); sT() });
+        document.getElementById('eqFormBot').addEventListener('submit', e => { e.preventDefault(); e.target.reset(); sT() });
+
+        // Keyboard
+        document.addEventListener('keydown', e => {
+            if (eqP.classList.contains('on')) { if (e.key === 'Escape') eqP.classList.remove('on'); return }
+            if (!lbE.classList.contains('on')) return;
+            if (e.key === 'Escape') cLb(); if (e.key === 'ArrowLeft') gP(); if (e.key === 'ArrowRight') gN();
+        });
+
+        // Mobile menu
+        const mm = document.getElementById('mobileMenu');
+        document.getElementById('menuBtn').addEventListener('click', () => { mm.classList.add('open'); document.body.style.overflow = 'hidden' });
+        document.getElementById('closeMenu').addEventListener('click', () => { mm.classList.remove('open'); document.body.style.overflow = '' });
+        document.querySelectorAll('.ml').forEach(l => l.addEventListener('click', () => { mm.classList.remove('open'); document.body.style.overflow = '' }));
+
+        // Nav scroll
+        const secs = document.querySelectorAll('section[id],footer[id]'), nls = document.querySelectorAll('header nav a');
+        window.addEventListener('scroll', () => { let c = ''; secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) c = s.id }); nls.forEach(l => l.classList.toggle('cur', l.getAttribute('href') === '#' + c)) }, { passive: true });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Works</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        oswald: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F5F2ED;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #F5F2ED; }
+        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+
+        .masonry { columns: 4; column-gap: 8px; }
+        @media (max-width: 1024px) { .masonry { columns: 3; } }
+        @media (max-width: 640px) { .masonry { columns: 2; column-gap: 6px; } }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(14px);
+            animation: fadeUp 0.45s ease forwards;
+        }
+        @media (max-width: 640px) { .masonry-item { margin-bottom: 6px; } }
+        .masonry-item.filtered-out {
+            display: none;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .masonry-item:hover img {
+            transform: scale(1.02);
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cat-link {
+            color: #999;
+            transition: color 0.25s ease;
+            cursor: pointer;
+        }
+        .cat-link:hover { color: #555; }
+        .cat-link.active { color: #1a1a1a; font-weight: 600; }
+
+        .nav-link {
+            color: #999;
+            transition: color 0.25s ease;
+            font-weight: 500;
+        }
+        .nav-link:hover { color: #1a1a1a; }
+        .nav-link.current { color: #1a1a1a; font-weight: 600; }
+
+        .divider {
+            height: 1px;
+            background: rgba(0,0,0,0.08);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox .lb-inner {
+            transform: scale(0.97) translateY(8px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .lightbox.active .lb-inner {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Info panel painted bg */
+        .info-painted {
+            position: relative;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+        .info-painted::before,
+        .info-painted::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
+        .info-painted::before {
+            width: 200%;
+            height: 200%;
+            top: -60%;
+            left: -60%;
+            background: var(--paint-a, #C0392B);
+        }
+        .info-painted::after {
+            width: 160%;
+            height: 160%;
+            bottom: -50%;
+            right: -50%;
+            background: var(--paint-b, #2C3E50);
+        }
+        .info-painted .paint-layer-1,
+        .info-painted .paint-layer-2 {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(60px);
+        }
+        .info-painted .paint-layer-1 {
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            right: -40%;
+            background: var(--paint-c, #8E44AD);
+            opacity: 0.35;
+        }
+        .info-painted .paint-layer-2 {
+            width: 100%;
+            height: 100%;
+            bottom: -20%;
+            left: -20%;
+            background: var(--paint-d, #E67E22);
+            opacity: 0.3;
+        }
+        .info-painted .paint-layer-3 {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(70px);
+            width: 90%;
+            height: 90%;
+            top: 10%;
+            left: 20%;
+            background: var(--paint-e, #2980B9);
+            opacity: 0.2;
+        }
+        .info-painted .info-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Nav arrows */
+        .lb-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(26,26,26,0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+        .lb-arrow:hover {
+            background: rgba(26,26,26,0.9);
+            transform: translateY(-50%) scale(1.08);
+        }
+        .lb-arrow.prev { left: 12px; }
+        .lb-arrow.next { right: 12px; }
+        @media (min-width: 768px) {
+            .lb-arrow.prev { left: 20px; }
+            .lb-arrow.next { right: 20px; }
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+
+        /* Enquiry form */
+        .form-input {
+            width: 100%;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 0;
+            padding: 12px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #1a1a1a;
+            transition: border-color 0.25s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: #C0392B;
+        }
+        .form-input::placeholder {
+            color: #aaa;
+        }
+
+        .enquire-btn {
+            background: #C0392B;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            padding: 13px 32px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s ease;
+        }
+        .enquire-btn:hover { background: #A93226; }
+
+        .lb-enquire-btn {
+            background: #C0392B;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s ease;
+        }
+        .lb-enquire-btn:hover { background: #A93226; }
+
+        .foot-link {
+            color: #999;
+            transition: color 0.25s ease;
+        }
+        .foot-link:hover { color: #1a1a1a; }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #1a1a1a;
+            color: #fff;
+            padding: 14px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body class="font-inter">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#F5F2ED]/90 backdrop-blur-md">
+        <div class="max-w-[1440px] mx-auto px-5 md:px-10 h-14 flex items-center justify-between">
+            <a href="#" class="font-oswald text-xl font-bold tracking-[-0.02em] text-[#1a1a1a] hover:text-[#C0392B] transition-colors">Artist Name</a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#works" class="nav-link current text-[13px] tracking-wide">Selected Works</a>
+                <a href="#resume" class="nav-link text-[13px] tracking-wide">Resume</a>
+                <a href="#contact" class="nav-link text-[13px] tracking-wide">Contact</a>
+            </nav>
+            <button id="menuBtn" class="md:hidden text-[#999] hover:text-[#1a1a1a] transition-colors">
+                <iconify-icon icon="lucide:menu" width="22"></iconify-icon>
+            </button>
+        </div>
+        <div class="divider"></div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-[#F5F2ED] flex flex-col items-center justify-center gap-8">
+        <button id="closeMenu" class="absolute top-4 right-5 text-[#999] hover:text-[#1a1a1a] transition-colors">
+            <iconify-icon icon="lucide:x" width="24"></iconify-icon>
+        </button>
+        <a href="#works" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] mob-link">Selected Works</a>
+        <a href="#resume" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] mob-link">Resume</a>
+        <a href="#contact" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] mob-link">Contact</a>
+    </div>
+
+    <!-- MAIN -->
+    <main class="pt-[58px]">
+
+        <!-- Categories -->
+        <section id="works" class="max-w-[1440px] mx-auto px-5 md:px-10 pt-7 pb-5">
+            <div class="space-y-2 text-[14px] leading-relaxed">
+                <div class="flex flex-wrap items-center gap-x-1 gap-y-1">
+                    <span class="text-[#bbb] font-medium">Paintings /</span>
+                    <span class="cat-link active px-2 py-0.5" data-cat="all">All</span>
+                    <span class="text-[#ccc]">/</span>
+                    <span class="cat-link px-2 py-0.5" data-cat="abstract">Abstract</span>
+                    <span class="text-[#ccc]">/</span>
+                    <span class="cat-link px-2 py-0.5" data-cat="portrait">Portrait</span>
+                    <span class="text-[#ccc]">/</span>
+                    <span class="cat-link px-2 py-0.5" data-cat="landscape">Landscape</span>
+                    <span class="text-[#ccc]">/</span>
+                    <span class="cat-link px-2 py-0.5" data-cat="zodiac">Animals &amp; Zodiac</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-1 gap-y-1">
+                    <span class="text-[#bbb] font-medium">Sculptures /</span>
+                    <span class="cat-link px-2 py-0.5" data-cat="sculpt-animal">Animals</span>
+                    <span class="text-[#ccc]">/</span>
+                    <span class="cat-link px-2 py-0.5" data-cat="sculpt-furniture">Furnitures</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider max-w-[1440px] mx-auto"></div>
+
+        <!-- Gallery -->
+        <section class="max-w-[1440px] mx-auto px-5 md:px-10 py-6">
+            <div class="masonry" id="gallery"></div>
+            <div id="emptyState" class="hidden py-24 text-center">
+                <p class="text-[#bbb] text-sm">No works in this category.</p>
+            </div>
+        </section>
+
+        <!-- Resume -->
+        <section id="resume" class="max-w-[1440px] mx-auto px-5 md:px-10 py-16">
+            <h2 class="font-oswald text-3xl font-bold tracking-tight mb-10 text-[#1a1a1a]">Resume</h2>
+            <div class="grid md:grid-cols-2 gap-14 text-sm text-[#777] leading-relaxed">
+                <div>
+                    <h3 class="text-[#1a1a1a] font-semibold mb-4 text-[15px]">Education</h3>
+                    <p class="mb-1.5">MFA, Fine Arts — École des Beaux-Arts, 2018</p>
+                    <p>BFA, Painting — Central Academy of Fine Arts, 2015</p>
+                </div>
+                <div>
+                    <h3 class="text-[#1a1a1a] font-semibold mb-4 text-[15px]">Selected Exhibitions</h3>
+                    <p class="mb-1.5">2024 — "Chromatic Fields", Galerie Perrotin, Paris</p>
+                    <p class="mb-1.5">2023 — "Between Realms", White Cube, London</p>
+                    <p class="mb-1.5">2022 — "Silent Dialogues", UCCA, Beijing</p>
+                    <p>2021 — "New Horizons", Art Basel, Hong Kong</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ENQUIRY SECTION -->
+    <section id="enquiry" class="bg-[#EDEAE5]">
+        <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-16 md:py-20">
+            <h2 class="font-oswald text-3xl font-bold tracking-tight mb-2 text-[#1a1a1a]">Enquiry</h2>
+            <p class="text-[#999] text-sm mb-10">Interested in a work? Let us know and we'll get back to you shortly.</p>
+            <form id="enquiryForm" class="grid md:grid-cols-2 gap-5 max-w-3xl">
+                <div>
+                    <label class="block text-xs font-semibold text-[#888] uppercase tracking-wider mb-2">Name *</label>
+                    <input type="text" class="form-input" placeholder="Your name" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-[#888] uppercase tracking-wider mb-2">Email *</label>
+                    <input type="email" class="form-input" placeholder="your@email.com" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-[#888] uppercase tracking-wider mb-2">Artwork of Interest</label>
+                    <select id="artworkSelect" class="form-input">
+                        <option value="">— Select a work —</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-[#888] uppercase tracking-wider mb-2">Phone</label>
+                    <input type="tel" class="form-input" placeholder="+1 (555) 000-0000">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-semibold text-[#888] uppercase tracking-wider mb-2">Message / Asking Price</label>
+                    <textarea id="enquiryMsg" class="form-input" rows="5" placeholder="Please describe your interest, ask about pricing, or leave any questions..."></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="enquire-btn">Send Enquiry</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-[#1a1a1a]">
+        <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-8">
+            <div class="flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px]">
+                <a href="#" class="foot-link flex items-center gap-2">
+                    <iconify-icon icon="lucide:instagram" width="16"></iconify-icon>
+                    Instagram
+                </a>
+                <a href="#" class="foot-link flex items-center gap-2">
+                    <iconify-icon icon="lucide:book-open" width="16"></iconify-icon>
+                    小红书
+                </a>
+                <a href="mailto:artist@example.com" class="foot-link flex items-center gap-2">
+                    <iconify-icon icon="lucide:mail" width="16"></iconify-icon>
+                    Email
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox fixed inset-0 z-[70] bg-[#F5F2ED] flex flex-col">
+        <!-- Top bar -->
+        <div class="flex items-center justify-between px-4 md:px-8 h-14 flex-shrink-0">
+            <span id="lbCounter" class="text-[#999] text-[13px] font-medium tabular-nums"></span>
+            <button id="closeLb" class="text-[#999] hover:text-[#1a1a1a] transition-colors">
+                <iconify-icon icon="lucide:x" width="24"></iconify-icon>
+            </button>
+        </div>
+        <!-- Content -->
+        <div class="flex-1 flex flex-col md:flex-row items-stretch overflow-hidden">
+            <!-- Image area -->
+            <div class="relative flex-1 flex items-center justify-center px-2 md:px-4 pb-2 md:pb-0 min-h-0">
+                <button id="lbPrev" class="lb-arrow prev">
+                    <iconify-icon icon="lucide:chevron-left" width="22"></iconify-icon>
+                </button>
+                <img id="lbImg" src="" alt="" class="max-w-full max-h-full object-contain select-none px-10">
+                <button id="lbNext" class="lb-arrow next">
+                    <iconify-icon icon="lucide:chevron-right" width="22"></iconify-icon>
+                </button>
+            </div>
+            <!-- Info panel -->
+            <div id="lbInfoPanel" class="info-painted w-full md:w-[320px] lg:w-[360px] flex-shrink-0 flex flex-col justify-between p-6 md:p-8 text-white">
+                <div class="paint-layer-1"></div>
+                <div class="paint-layer-2"></div>
+                <div class="paint-layer-3"></div>
+                <div class="info-content">
+                    <h3 id="lbTitle" class="font-oswald text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-6"></h3>
+                    <div class="space-y-4 text-[13px]">
+                        <div>
+                            <span class="text-white/40 text-[11px] font-semibold uppercase tracking-widest">Year</span>
+                            <p id="lbYear" class="text-white/90 mt-1 font-medium"></p>
+                        </div>
+                        <div>
+                            <span class="text-white/40 text-[11px] font-semibold uppercase tracking-widest">Medium</span>
+                            <p id="lbMedium" class="text-white/90 mt-1 font-medium"></p>
+                        </div>
+                        <div>
+                            <span class="text-white/40 text-[11px] font-semibold uppercase tracking-widest">Size</span>
+                            <p id="lbSize" class="text-white/90 mt-1 font-medium"></p>
+                        </div>
+                        <div>
+                            <span class="text-white/40 text-[11px] font-semibold uppercase tracking-widest">Category</span>
+                            <p id="lbCat" class="text-white/90 mt-1 font-medium"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-content mt-8 space-y-4">
+                    <button id="lbEnquireBtn" class="lb-enquire-btn w-full">Enquire About This Work</button>
+                    <div class="flex items-center justify-between text-[12px]">
+                        <button id="lbPrevText" class="text-white/50 hover:text-white transition-colors font-medium flex items-center gap-1">
+                            <iconify-icon icon="lucide:arrow-left" width="14"></iconify-icon> Prev
+                        </button>
+                        <button id="lbNextText" class="text-white/50 hover:text-white transition-colors font-medium flex items-center gap-1">
+                            Next <iconify-icon icon="lucide:arrow-right" width="14"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">Enquiry sent successfully!</div>
+
+    <script>
+        // ========== DATA ==========
+        const artworks = [
+            // Abstract
+            { id:1,  title:"Ephemeral Glow",       cat:"abstract", year:"2024", medium:"Oil on canvas",        size:"120 × 90 cm",
+              img:"https://z-cdn-media.chatglm.cn/files/7e4b51a4-75f1-4eb2-bbc7-0be7da58c97c.jpg?auth_key=1883056714-a0e1b920dd7d477bbb8e6c346b0e8ca6-0-f7240110edbd97f602985567edc2bbfe",
+              paint:['#C0392B','#E67E22','#F39C12','#8E44AD','#2C3E50'] },
+            { id:2,  title:"Chromatic Drift",       cat:"abstract", year:"2023", medium:"Acrylic on canvas",     size:"100 × 100 cm",
+              img:"https://z-cdn-media.chatglm.cn/files/c59ad9e5-fbcc-453d-9213-8470e5672199.jpg?auth_key=1883056714-482db957bcf74dc29b6e66dac5312415-0-cfdd17c0881444195f180539f87644da",
+              paint:['#6C3483','#2471A3','#1E8449','#784212','#566573'] },
+            { id:3,  title:"Silent Resonance",      cat:"abstract", year:"2024", medium:"Oil on canvas",        size:"150 × 100 cm",
+              img:"https://z-cdn-media.chatglm.cn/files/294ca888-08fe-430f-a93c-66a574a00e89.jpg?auth_key=1883056714-84849db05de1478e95b4aa4578d805a8-0-a4b103fd3b1a6aca75df08f143ec272f",
+              paint:['#922B21','#E67E22','#7D3C98','#2E86C1','#1B1B1B'] },
+            { id:4,  title:"Veiled Spectrum",       cat:"abstract", year:"2023", medium:"Mixed media on panel", size:"80 × 120 cm",
+              img:"https://picsum.photos/seed/abs-veil/600/820",
+              paint:['#A569BD','#F1948A','#85C1E9','#F9E79F','#2C3E50'] },
+            { id:5,  title:"Dissolving Boundaries", cat:"abstract", year:"2022", medium:"Oil on linen",         size:"130 × 90 cm",
+              img:"https://picsum.photos/seed/abs-diss/600/540",
+              paint:['#E74C3C','#F39C12','#3498DB','#27AE60','#2C3E50'] },
+            { id:6,  title:"Prismatic Whisper",     cat:"abstract", year:"2024", medium:"Acrylic & ink",        size:"90 × 90 cm",
+              img:"https://picsum.photos/seed/abs-prism/600/680",
+              paint:['#D35400','#8E44AD','#2980B9','#F1C40F','#1A1A2E'] },
+
+            // Portrait
+            { id:7,  title:"Inner Quietude",   cat:"portrait", year:"2024", medium:"Oil on canvas",    size:"80 × 100 cm",
+              img:"https://z-cdn-media.chatglm.cn/files/c517bec8-27b3-4812-80d8-12ca5a3f5f59.jpg?auth_key=1883056714-3c75c44804b240338a6b04667a8b21c9-0-2c8746b28996706608dd3a582783593e",
+              paint:['#E67E22','#F1C40F','#1B1B1B','#D35400','#784212'] },
+            { id:8,  title:"The Observer",      cat:"portrait", year:"2023", medium:"Charcoal & oil",  size:"90 × 70 cm",
+              img:"https://picsum.photos/seed/ptr-obs/600/600",
+              paint:['#2C3E50','#7F8C8D','#BDC3C7','#ECF0F1','#1A1A1A'] },
+            { id:9,  title:"Fleeting Gaze",     cat:"portrait", year:"2024", medium:"Oil on canvas",    size:"70 × 90 cm",
+              img:"https://picsum.photos/seed/ptr-gaze/500/720",
+              paint:['#C0392B','#F5CBA7','#784212','#FDEBD0','#1A1A1A'] },
+            { id:10, title:"Solitude in Light", cat:"portrait", year:"2022", medium:"Acrylic on canvas",size:"100 × 80 cm",
+              img:"https://picsum.photos/seed/ptr-soli/600/600",
+              paint:['#F0E6D3','#D4A76A','#8B6914','#F5F0E8','#3C3C3C'] },
+
+            // Landscape
+            { id:11, title:"Morning Mist Valley", cat:"landscape", year:"2024", medium:"Oil on canvas",     size:"150 × 100 cm",
+              img:"https://picsum.photos/seed/ld-mist/720/480",
+              paint:['#85C1E9','#A9DFBF','#F9E79F','#D5DBDB','#2C3E50'] },
+            { id:12, title:"Twilight Horizon",   cat:"landscape", year:"2023", medium:"Oil on linen",       size:"120 × 80 cm",
+              img:"https://picsum.photos/seed/ld-twil/600/760",
+              paint:['#E74C3C','#F39C12','#6C3483','#1A5276','#1B1B1B'] },
+            { id:13, title:"Silent Waters",      cat:"landscape", year:"2024", medium:"Acrylic on canvas", size:"100 × 100 cm",
+              img:"https://picsum.photos/seed/ld-water/600/600",
+              paint:['#2E86C1','#AED6F1','#F7DC6F','#1B4F72','#0E3D54'] },
+            { id:14, title:"Distant Peaks",      cat:"landscape", year:"2023", medium:"Oil on canvas",     size:"140 × 90 cm",
+              img:"https://picsum.photos/seed/ld-peak/720/460",
+              paint:['#5DADE2','#ABEBC6','#FAD7A0','#85929E','#2C3E50'] },
+
+            // Animals & Zodiac
+            { id:15, title:"The Dragon",  cat:"zodiac", year:"2024", medium:"Oil & gold leaf",   size:"100 × 100 cm",
+              img:"https://picsum.photos/seed/zod-dragon/600/600",
+              paint:['#C0392B','#F1C40F','#27AE60','#2C3E50','#D4AC0D'] },
+            { id:16, title:"The Tiger",   cat:"zodiac", year:"2023", medium:"Oil on canvas",     size:"90 × 120 cm",
+              img:"https://picsum.photos/seed/zod-tiger/600/800",
+              paint:['#E67E22','#1A1A1A','#F39C12','#784212','#F5CBA7'] },
+            { id:17, title:"The Serpent",  cat:"zodiac", year:"2024", medium:"Mixed media",       size:"80 × 100 cm",
+              img:"https://z-cdn-media.chatglm.cn/files/c15d5930-31ae-4642-9554-0b6559023029.jpg?auth_key=1883056714-50963855030840c9ab2593a2a02e19c4-0-e82cad52c65521a67fef7116b5b4c452",
+              paint:['#C0392B','#1ABC9C','#F1C40F','#2E86C1','#1A1A1A'] },
+            { id:18, title:"The Phoenix",  cat:"zodiac", year:"2023", medium:"Oil on canvas",     size:"120 × 90 cm",
+              img:"https://picsum.photos/seed/zod-phoe/720/500",
+              paint:['#E74C3C','#F39C12','#8E44AD','#2C3E50','#F5B041'] },
+            { id:19, title:"The Rabbit",   cat:"zodiac", year:"2024", medium:"Acrylic on canvas", size:"70 × 90 cm",
+              img:"https://picsum.photos/seed/zod-rabb/500/680",
+              paint:['#F5F0E8','#D4A76A','#BDC3C7','#8B6914','#3C3C3C'] },
+            { id:20, title:"Winding Forms", cat:"zodiac", year:"2025", medium:"Oil on canvas",     size:"100 × 120 cm",
+              img:"https://z-cdn-media.chatglm.cn/files/e09926f5-28d5-44d5-82d1-98fe58a9336e.jpg?auth_key=1883056714-c82dfd0edcd5422eb00d9393b481bfaf-0-288988e7c4cb028e336ec3da06829e51",
+              paint:['#F1C40F','#E91E8C','#27AE60','#8E44AD','#6B8E6B'] },
+            { id:21, title:"Khirim",       cat:"zodiac", year:"2025", medium:"Oil on canvas",     size:"130 × 90 cm",
+              img:"https://z-cdn-media.chatglm.cn/files/db579d98-4384-4b15-9197-b9ea25ba2337.jpg?auth_key=1883056714-4240f1766e0c4da890164e10e5b49fdf-0-3ee36cee690998e94777ca1b453b7ee4",
+              paint:['#9B59B6','#E91E8C','#2E86C1','#1A1A1A','#5B2C6F'] },
+
+            // Sculpture: Animals
+            { id:22, title:"Resting Fawn",  cat:"sculpt-animal", year:"2024", medium:"Bronze",          size:"40 × 25 × 30 cm",
+              img:"https://picsum.photos/seed/sc-fawn/600/760",
+              paint:['#8B7355','#A0522D','#D2B48C','#3E2723','#6D4C41'] },
+            { id:23, title:"Soaring Kite",  cat:"sculpt-animal", year:"2023", medium:"Stainless steel",  size:"60 × 40 × 50 cm",
+              img:"https://picsum.photos/seed/sc-kite/600/600",
+              paint:['#BDC3C7','#7F8C8D','#566573','#ECF0F1','#2C3E50'] },
+            { id:24, title:"The Guardian",  cat:"sculpt-animal", year:"2024", medium:"Bronze patina",   size:"50 × 35 × 45 cm",
+              img:"https://picsum.photos/seed/sc-guard/500/720",
+              paint:['#4A6741','#6D4C41','#2E4053','#8B7355','#1A1A1A'] },
+
+            // Sculpture: Furnitures
+            { id:25, title:"Arc Chair",    cat:"sculpt-furniture", year:"2024", medium:"Walnut & brass",    size:"85 × 60 × 75 cm",
+              img:"https://picsum.photos/seed/sf-arc/600/760",
+              paint:['#5D4037','#C5A572','#3E2723','#F5F0E8','#8D6E63'] },
+            { id:26, title:"Flow Table",   cat:"sculpt-furniture", year:"2023", medium:"Oak & glass",       size:"180 × 90 × 75 cm",
+              img:"https://picsum.photos/seed/sf-flow/720/480",
+              paint:['#6D4C41','#BDC3C7','#A1887F','#E0E0E0','#3E2723'] },
+            { id:27, title:"Vessel Shelf", cat:"sculpt-furniture", year:"2024", medium:"Blackened steel",   size:"120 × 30 × 180 cm",
+              img:"https://picsum.photos/seed/sf-vessel/500/720",
+              paint:['#212121','#424242','#616161','#9E9E9E','#1A1A1A'] },
+        ];
+
+        const catLabels = {
+            'abstract':         'Painting — Abstract',
+            'portrait':         'Painting — Portrait',
+            'landscape':        'Painting — Landscape',
+            'zodiac':           'Painting — Animals & Zodiac',
+            'sculpt-animal':    'Sculpture — Animals',
+            'sculpt-furniture': 'Sculpture — Furnitures',
+        };
+
+        // ========== GALLERY ==========
+        const gallery = document.getElementById('gallery');
+        const emptyEl = document.getElementById('emptyState');
+
+        function renderGallery() {
+            gallery.innerHTML = artworks.map((a, i) => `
+                <div class="masonry-item" data-cat="${a.cat}" data-id="${a.id}" style="animation-delay:${i * 35}ms">
+                    <div class="cursor-pointer" onclick="openLb(${a.id})">
+                        <img src="${a.img}" alt="${a.title}" loading="lazy" draggable="false">
+                    </div>
+                </div>
+            `).join('');
+        }
+        renderGallery();
+
+        // Populate enquiry dropdown
+        const artSelect = document.getElementById('artworkSelect');
+        artworks.forEach(a => {
+            const opt = document.createElement('option');
+            opt.value = a.id;
+            opt.textContent = `${a.title} (${a.year})`;
+            artSelect.appendChild(opt);
+        });
+
+        // ========== FILTERING ==========
+        const catLinks = document.querySelectorAll('.cat-link');
+        let curCat = 'all';
+
+        catLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                catLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                curCat = link.dataset.cat;
+                filterGallery();
+            });
+        });
+
+        function filterGallery() {
+            const items = gallery.querySelectorAll('.masonry-item');
+            let count = 0;
+            items.forEach(item => {
+                const show = curCat === 'all' || item.dataset.cat === curCat;
+                item.classList.toggle('filtered-out', !show);
+                if (show) count++;
+            });
+            emptyEl.classList.toggle('hidden', count > 0);
+        }
+
+        function getFiltered() {
+            return curCat === 'all'
+                ? [...artworks]
+                : artworks.filter(a => a.cat === curCat);
+        }
+
+        // ========== LIGHTBOX ==========
+        const lb          = document.getElementById('lightbox');
+        const lbImg       = document.getElementById('lbImg');
+        const lbTitle     = document.getElementById('lbTitle');
+        const lbYear      = document.getElementById('lbYear');
+        const lbMedium    = document.getElementById('lbMedium');
+        const lbSize      = document.getElementById('lbSize');
+        const lbCat       = document.getElementById('lbCat');
+        const lbCounter   = document.getElementById('lbCounter');
+        const lbInfoPanel = document.getElementById('lbInfoPanel');
+
+        let lbFiltered = [...artworks];
+        let lbIndex = 0;
+
+        function setPaintBg(colors) {
+            lbInfoPanel.style.setProperty('--paint-a', colors[0]);
+            lbInfoPanel.style.setProperty('--paint-b', colors[1]);
+            lbInfoPanel.style.setProperty('--paint-c', colors[2]);
+            lbInfoPanel.style.setProperty('--paint-d', colors[3]);
+            lbInfoPanel.style.setProperty('--paint-e', colors[4]);
+        }
+
+        function showLbItem() {
+            const a = lbFiltered[lbIndex];
+            if (!a) return;
+            lbImg.src = a.img;
+            lbImg.alt = a.title;
+            lbTitle.textContent  = a.title;
+            lbYear.textContent   = a.year;
+            lbMedium.textContent = a.medium;
+            lbSize.textContent   = a.size;
+            lbCat.textContent    = catLabels[a.cat];
+            lbCounter.textContent = `${lbIndex + 1} / ${lbFiltered.length}`;
+            setPaintBg(a.paint);
+        }
+
+        function openLb(id) {
+            lbFiltered = getFiltered();
+            lbIndex = lbFiltered.findIndex(a => a.id === id);
+            if (lbIndex < 0) lbIndex = 0;
+            showLbItem();
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLb() {
+            lb.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function lbPrev() {
+            lbIndex = (lbIndex - 1 + lbFiltered.length) % lbFiltered.length;
+            showLbItem();
+        }
+        function lbNext() {
+            lbIndex = (lbIndex + 1) % lbFiltered.length;
+            showLbItem();
+        }
+
+        document.getElementById('closeLb').addEventListener('click', closeLb);
+        document.getElementById('lbPrev').addEventListener('click', lbPrev);
+        document.getElementById('lbNext').addEventListener('click', lbNext);
+        document.getElementById('lbPrevText').addEventListener('click', lbPrev);
+        document.getElementById('lbNextText').addEventListener('click', lbNext);
+
+        // Enquire from lightbox
+        document.getElementById('lbEnquireBtn').addEventListener('click', () => {
+            const a = lbFiltered[lbIndex];
+            closeLb();
+            artSelect.value = a.id;
+            document.getElementById('enquiry').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById('enquiryMsg').focus();
+                document.getElementById('enquiryMsg').placeholder =
+                    `I'm interested in "${a.title}" (${a.year}). Could you please provide pricing and availability?`;
+            }, 500);
+        });
+
+        // Keyboard nav
+        document.addEventListener('keydown', e => {
+            if (!lb.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLb();
+            if (e.key === 'ArrowLeft') lbPrev();
+            if (e.key === 'ArrowRight') lbNext();
+        });
+
+        // ========== MOBILE MENU ==========
+        const mm = document.getElementById('mobileMenu');
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            mm.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+        document.getElementById('closeMenu').addEventListener('click', () => {
+            mm.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+        document.querySelectorAll('.mob-link').forEach(l => {
+            l.addEventListener('click', () => {
+                mm.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ========== NAV SCROLL ==========
+        const sections = document.querySelectorAll('section[id], footer[id]');
+        const navLinks = document.querySelectorAll('header nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+            });
+            navLinks.forEach(link => {
+                link.classList.toggle('current', link.getAttribute('href') === '#' + current);
+            });
+        }, { passive: true });
+
+        // ========== ENQUIRY FORM ==========
+        const toast = document.getElementById('toast');
+        document.getElementById('enquiryForm').addEventListener('submit', e => {
+            e.preventDefault();
+            toast.classList.add('show');
+            e.target.reset();
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        });
+    </script>
+</body>
+</html>
