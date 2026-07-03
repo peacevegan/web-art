@@ -601,7 +601,7 @@
         const emptyEl = document.getElementById('emptyState');
 
         function renderGallery() {
-            gallery.innerHTML = artworks.map((a, i) => `
+            gallery.innerHTML = artworks.slice(0, 30).map((a, i) => `
                 <div class="masonry-item" data-cat="${a.cat}" data-id="${a.id}" style="animation-delay:${i * 35}ms">
                     <div class="cursor-pointer" onclick="openLb(${a.id})">
                         <img src="${a.img}" alt="${a.title}" loading="lazy" draggable="false">
