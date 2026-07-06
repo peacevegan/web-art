@@ -6,14 +6,13 @@
     <title>Selected Works</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                        oswald: ['Oswald', 'sans-serif'],
+                        merriweatherSans: ['Merriweather Sans', 'sans-serif'],
                     }
                 }
             }
@@ -22,7 +21,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Merriweather Sans', sans-serif;
             background: #F5F2ED;
             color: #1a1a1a;
             -webkit-font-smoothing: antialiased;
@@ -215,7 +214,7 @@
             border: 1px solid rgba(0,0,0,0.12);
             border-radius: 0;
             padding: 12px 14px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Merriweather Sans', sans-serif;
             font-size: 14px;
             color: #1a1a1a;
             transition: border-color 0.25s ease;
@@ -231,7 +230,7 @@
         .enquire-btn {
             background: #C0392B;
             color: #fff;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Merriweather Sans', sans-serif;
             font-weight: 600;
             font-size: 14px;
             letter-spacing: 0.02em;
@@ -245,7 +244,7 @@
         .lb-enquire-btn {
             background: #C0392B;
             color: #fff;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Merriweather Sans', sans-serif;
             font-weight: 600;
             font-size: 12px;
             letter-spacing: 0.03em;
@@ -285,12 +284,12 @@
         }
     </style>
 </head>
-<body class="font-inter">
+<body class="font-merriweatherSans">
 
     <!-- HEADER -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#F5F2ED]/90 backdrop-blur-md">
         <div class="max-w-[1440px] mx-auto px-5 md:px-10 h-14 flex items-center justify-between">
-            <a href="#" class="font-oswald text-xl font-bold tracking-[-0.02em] text-[#1a1a1a] hover:text-[#C0392B] transition-colors">Artist Name</a>
+            <a href="#" class="font-merriweatherSans text-xl font-bold tracking-[-0.02em] text-[#1a1a1a] hover:text-[#C0392B] transition-colors">Artist Name</a>
             <nav class="hidden md:flex items-center gap-8">
                 <a href="#works" class="nav-link current text-[13px] tracking-wide">Selected Works</a>
                 <a href="#resume" class="nav-link text-[13px] tracking-wide">Resume</a>
@@ -308,9 +307,9 @@
         <button id="closeMenu" class="absolute top-4 right-5 text-[#999] hover:text-[#1a1a1a] transition-colors">
             <iconify-icon icon="lucide:x" width="24"></iconify-icon>
         </button>
-        <a href="#works" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] mob-link">Selected Works</a>
-        <a href="#resume" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] mob-link">Resume</a>
-        <a href="#contact" class="text-2xl font-oswald font-bold tracking-wide text-[#1a1a1a] mob-link">Contact</a>
+        <a href="#works" class="text-2xl font-merriweatherSans font-bold tracking-wide text-[#1a1a1a] mob-link">Selected Works</a>
+        <a href="#resume" class="text-2xl font-merriweatherSans font-bold tracking-wide text-[#1a1a1a] mob-link">Resume</a>
+        <a href="#contact" class="text-2xl font-merriweatherSans font-bold tracking-wide text-[#1a1a1a] mob-link">Contact</a>
     </div>
 
     <!-- MAIN -->
@@ -352,7 +351,7 @@
 
         <!-- Resume -->
         <section id="resume" class="max-w-[1440px] mx-auto px-5 md:px-10 py-16">
-            <h2 class="font-oswald text-3xl font-bold tracking-tight mb-10 text-[#1a1a1a]">Resume</h2>
+            <h2 class="font-merriweatherSans text-3xl font-bold tracking-tight mb-10 text-[#1a1a1a]">Resume</h2>
             <div class="grid md:grid-cols-2 gap-14 text-sm text-[#777] leading-relaxed">
                 <div>
                     <h3 class="text-[#1a1a1a] font-semibold mb-4 text-[15px]">Education</h3>
@@ -373,7 +372,7 @@
     <!-- ENQUIRY SECTION -->
     <section id="enquiry" class="bg-[#EDEAE5]">
         <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-16 md:py-20">
-            <h2 class="font-oswald text-3xl font-bold tracking-tight mb-2 text-[#1a1a1a]">Enquiry</h2>
+            <h2 class="font-merriweatherSans text-3xl font-bold tracking-tight mb-2 text-[#1a1a1a]">Enquiry</h2>
             <p class="text-[#999] text-sm mb-10">Interested in a work? Let us know and we'll get back to you shortly.</p>
             <form id="enquiryForm" class="grid md:grid-cols-2 gap-5 max-w-3xl">
                 <div>
@@ -452,7 +451,7 @@
                 <div class="paint-layer-2"></div>
                 <div class="paint-layer-3"></div>
                 <div class="info-content">
-                    <h3 id="lbTitle" class="font-oswald text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-6"></h3>
+                    <h3 id="lbTitle" class="font-merriweatherSans text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-6"></h3>
                     <div class="space-y-4 text-[13px]">
                         <div>
                             <span class="text-white/40 text-[11px] font-semibold uppercase tracking-widest">Year</span>
