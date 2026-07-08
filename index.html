@@ -666,19 +666,20 @@
             </p>
             <form id="eqFormBot" class="grid md:grid-cols-2 gap-5 max-w-3xl">
                 <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Name
-                        *</label><input type="text" class="fi" placeholder="Your name" required></div>
+                        *</label><input type="text" name="name" class="fi" placeholder="Your name" required></div>
                 <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Email
-                        *</label><input type="email" class="fi" placeholder="your@email.com" required></div>
+                        *</label><input type="email" name="email" class="fi" placeholder="your@email.com" required>
+                </div>
                 <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Artwork of
-                        Interest</label><select id="aSel" class="fi fs">
+                        Interest</label><select id="aSel" name="artwork" class="fi fs">
                         <option value="">— Select a work —</option>
                     </select></div>
                 <div><label
                         class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Phone</label><input
-                        type="tel" class="fi" placeholder="+1 (555) 000-0000"></div>
+                        type="tel" name="phone" class="fi" placeholder="+1 (555) 000-0000"></div>
                 <div class="md:col-span-2"><label
                         class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Message / Asking
-                        Price</label><textarea class="fi" rows="5"
+                        Price</label><textarea name="message" class="fi" rows="5"
                         placeholder="Please describe your interest, ask about pricing, or leave any questions..."></textarea>
                 </div>
                 <div class="md:col-span-2"><button type="submit" class="br">Send Enquiry</button></div>
@@ -764,14 +765,14 @@
                 <p id="eqAr" class="text-[13px] text-[#C0392B] font-semibold mb-5"></p>
                 <form id="eqF" class="space-y-4">
                     <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Name
-                            *</label><input type="text" class="fi" required></div>
+                            *</label><input type="text" name="name" class="fi" required></div>
                     <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Email
-                            *</label><input type="email" class="fi" required></div>
+                            *</label><input type="email" name="email" class="fi" required></div>
                     <div><label
                             class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Phone</label><input
-                            type="tel" class="fi"></div>
+                            type="tel" name="phone" class="fi"></div>
                     <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Message
-                            / Asking Price</label><textarea class="fi" rows="4"
+                            / Asking Price</label><textarea name="message" class="fi" rows="4"
                             placeholder="I'm interested in this work. Could you please provide pricing and availability?"></textarea>
                     </div>
                     <div class="flex gap-3 pt-2">
@@ -1591,9 +1592,30 @@
         document.getElementById('cnEq').addEventListener('click', () => eqP.classList.remove('on'));
         eqP.addEventListener('click', e => { if (e.target === eqP) eqP.classList.remove('on') });
 
+        const GOOGLE_SCRIPT_URL = 'index.html';
+
         function sT() { const t = document.getElementById('toast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000) }
-        document.getElementById('eqF').addEventListener('submit', e => { e.preventDefault(); eqP.classList.remove('on'); sT() });
-        document.getElementById('eqFormBot').addEventListener('submit', e => { e.preventDefault(); e.target.reset(); sT() });
+
+        function submitEnquiry(form, artworkTitle) {
+            const fd = new FormData(form);
+            const data = {
+                name: fd.get('name'),
+                email: fd.get('email'),
+                phone: fd.get('phone') || '',
+                artwork: artworkTitle || fd.get('artwork') || '',
+                message: fd.get('message') || '',
+                source: form.id
+            };
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            }).then(r => r.json()).then(r => {
+                if (r.status === 'success') { form.reset(); sT(); }
+            }).catch(() => { sT(); });
+        }
+
+        document.getElementById('eqF').addEventListener('submit', e => { e.preventDefault(); submitEnquiry(e.target, eqAr.textContent); eqP.classList.remove('on'); });
+        document.getElementById('eqFormBot').addEventListener('submit', e => { e.preventDefault(); submitEnquiry(e.target); });
 
         // Keyboard
         document.addEventListener('keydown', e => {
