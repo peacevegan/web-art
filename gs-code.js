@@ -1,12 +1,3 @@
-# Google Apps Script — Form Handler
-
-## Deployed URL
-```
-https://script.google.com/macros/s/AKfycbzlDu09U4f9PqhfbHc3nSYpdVhbCVkweaMDS3rY9Gg4hf1V7D80pk1RFTO9eptL3d2K/exec
-```
-
-## Updated gs-code.js
-```javascript
 // Google Apps Script — deploy as Web App to log form submissions to Google Sheets.
 //
 // HOW TO DEPLOY (do this from YOUR Google Sheet):
@@ -70,42 +61,3 @@ function doGet(e) {
 function setupHeaders() {
   getSheet().getRange(1, 1, 1, 7).setValues([['Timestamp', 'Name', 'Email', 'Phone', 'Artwork', 'Message', 'Source']]);
 }
-```
-
-## Server Scripts
-
-### Start local dev server
-```bash
-cd /Users/pvs/Documents/llm/web-art
-nohup python3 -m http.server 8080 --bind 127.0.0.1 > /dev/null 2>&1 &
-echo "Server started on http://localhost:8080 (PID: $!)"
-```
-
-### Kill local dev server
-```bash
-lsof -i :8080 -sTCP:LISTEN -t 2>/dev/null | xargs kill 2>/dev/null && echo "Server stopped" || echo "No server running on :8080"
-```
-
-## Testing Commands
-
-### Test GET (check if Web App is live)
-```bash
-curl -s -L 'https://script.google.com/macros/s/AKfycbzlDu09U4f9PqhfbHc3nSYpdVhbCVkweaMDS3rY9Gg4hf1V7D80pk1RFTO9eptL3d2K/exec'
-# Expected: {"status":"ok","message":"Web App is live."}
-```
-
-### Test POST (submit form data to Google Sheet)
-```bash
-curl -s -X POST \
-  'https://script.google.com/macros/s/AKfycbzlDu09U4f9PqhfbHc3nSYpdVhbCVkweaMDS3rY9Gg4hf1V7D80pk1RFTO9eptL3d2K/exec' \
-  -H 'Content-Type: application/json' \
-  -H 'Origin: http://localhost:8080' \
-  -d '{"name":"Test User","email":"test@example.com","phone":"+1234567890","artwork":"Chromatic Drift (2025)","message":"I am interested in purchasing this work.","source":"eqFormBot"}'
-```
-
-### Browser-based test
-1. Start the local server: `python3 -m http.server 8080 --bind 127.0.0.1`
-2. Open `http://localhost:8080` in a browser
-3. Fill out the enquiry form at the bottom of the page
-4. Click "Send Enquiry"
-5. Check the Google Sheet for the new row
