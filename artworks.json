@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "t": "Ephemeral Glow",
+    "t": "Trees reflection on the water",
     "c": "abstract",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "s": "150 × 110 cm",
     "u": "./img/001.jpg",
     "p": [
       "#C0392B",
@@ -17,11 +17,11 @@
   },
   {
     "id": 2,
-    "t": "Chromatic Drift",
+    "t": "Winter's night",
     "c": "abstract",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "100 × 100 cm",
+    "s": "70 × 90 cm",
     "u": "./img/002.jpg",
     "p": [
       "#6C3483",
@@ -33,11 +33,11 @@
   },
   {
     "id": 3,
-    "t": "Silent Resonance",
+    "t": "The House of Memories",
     "c": "abstract",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "150 × 100 cm",
+    "s": "150 × 110 cm",
     "u": "./img/003.jpg",
     "p": [
       "#922B21",
@@ -49,11 +49,11 @@
   },
   {
     "id": 4,
-    "t": "Stratified Spectrum",
+    "t": "Thunderstorm",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "140 × 90 cm",
+    "s": "70 × 90 cm",
     "u": "./img/004.jpg",
     "p": [
       "#0A1F44",
@@ -65,11 +65,11 @@
   },
   {
     "id": 5,
-    "t": "Chromatic Ribbons",
+    "t": "Deep pink day",
     "c": "abstract",
     "y": "2026",
     "m": "Acrylic on canvas",
-    "s": "130 × 85 cm",
+    "s": "62 × 82 cm",
     "u": "./img/005.jpg",
     "p": [
       "#B71C1C",
@@ -81,11 +81,11 @@
   },
   {
     "id": 6,
-    "t": "Azure and Verdant Layers",
+    "t": "The field",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "120 × 80 cm",
+    "s": "62 × 82 cm",
     "u": "./img/006.jpg",
     "p": [
       "#1565C0",
@@ -97,11 +97,11 @@
   },
   {
     "id": 7,
-    "t": "Warm Cascading Strata",
+    "t": "Under the sun",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "135 × 95 cm",
+    "s": "62 × 82 cm",
     "u": "./img/007.jpg",
     "p": [
       "#880E4F",
@@ -113,11 +113,11 @@
   },
   {
     "id": 8,
-    "t": "Earthy Textured Bands",
+    "t": "Horizon",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "150 × 100 cm",
+    "s": "62 × 82 cm",
     "u": "./img/008.jpg",
     "p": [
       "#1A237E",
@@ -129,11 +129,11 @@
   },
   {
     "id": 9,
-    "t": "Ember and Ash Stripes",
+    "t": "The Wave",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "145 × 90 cm",
+    "s": "60 × 80 cm",
     "u": "./img/009.jpg",
     "p": [
       "#37474F",
@@ -145,11 +145,11 @@
   },
   {
     "id": 10,
-    "t": "Inferno Horizon",
+    "t": "Sky",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "140 × 95 cm",
+    "s": "60 × 80 cm",
     "u": "./img/010.jpg",
     "p": [
       "#C62828",
@@ -161,11 +161,11 @@
   },
   {
     "id": 11,
-    "t": "Winter Branches",
+    "t": "Early Winter",
     "c": "abstract",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "150 × 100 cm",
+    "s": "80 × 100 cm",
     "u": "./img/011.jpg",
     "p": [
       "#5D6D7E",
@@ -177,11 +177,11 @@
   },
   {
     "id": 12,
-    "t": "Reflected Horizons",
+    "t": "Reflection",
     "c": "abstract",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "140 × 90 cm",
+    "s": "60 × 125 cm",
     "u": "./img/012.jpg",
     "p": [
       "#E67E22",
@@ -193,11 +193,11 @@
   },
   {
     "id": 13,
-    "t": "Twilight Over Dark Waters",
+    "t": "Morning",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "130 × 90 cm",
+    "s": "100 × 100 cm",
     "u": "./img/013.jpg",
     "p": [
       "#0D47A1",
@@ -209,11 +209,11 @@
   },
   {
     "id": 14,
-    "t": "Misty Mountain Reflections",
+    "t": "Night",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "135 × 85 cm",
+    "s": "80 × 90 cm",
     "u": "./img/014.jpg",
     "p": [
       "#1A1A2E",
@@ -225,11 +225,11 @@
   },
   {
     "id": 15,
-    "t": "Magical Purple",
+    "t": "In the fog",
     "c": "abstract",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "130 × 90 cm",
+    "s": "70 × 50 cm",
     "u": "./img/015.jpg",
     "p": [
       "#9B59B6",
@@ -241,9 +241,9 @@
   },
   {
     "id": 16,
-    "t": "Nocturnal Forest Drips",
+    "t": "The Park",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
     "s": "120 × 80 cm",
     "u": "./img/016.jpg",
@@ -257,11 +257,11 @@
   },
   {
     "id": 17,
-    "t": "Studio Resonance",
+    "t": "Purple Dragon",
     "c": "sculpt-animal",
-    "y": "2026",
+    "y": "2025",
     "m": "Mixed media",
-    "s": "120 × 85 cm",
+    "s": "80 × 80 cm",
     "u": "./img/017.jpg",
     "p": [
       "#E8507A",
@@ -274,9 +274,9 @@
   },
   {
     "id": 18,
-    "t": "Prickling Presence",
+    "t": "Wooden Dragon",
     "c": "sculpt-animal",
-    "y": "2026",
+    "y": "2025",
     "m": "Mixed media",
     "s": "90 × 70 cm",
     "u": "./img/018.jpg",
@@ -290,11 +290,11 @@
   },
   {
     "id": 19,
-    "t": "Silent Mountain Veil",
+    "t": "Moon night",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "130 × 100 cm",
+    "s": "140 × 200 cm",
     "u": "./img/019.jpg",
     "p": [
       "#1A2744",
@@ -306,11 +306,11 @@
   },
   {
     "id": 20,
-    "t": "Branches Over Still Water",
+    "t": "Autumn",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "s": "60 × 80 cm",
     "u": "./img/020.jpg",
     "p": [
       "#0A0A0A",
@@ -322,11 +322,11 @@
   },
   {
     "id": 21,
-    "t": "Twin Creatures of the Deep",
+    "t": "Twin Dragons",
     "c": "sculpt-animal",
-    "y": "2026",
+    "y": "2025",
     "m": "Mixed media",
-    "s": "110 × 80 cm",
+    "s": "80 × 70 cm",
     "u": "./img/021.jpg",
     "p": [
       "#1A8A7A",
@@ -338,11 +338,11 @@
   },
   {
     "id": 22,
-    "t": "Veiled Profile in Blue",
+    "t": "Look up",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 110 cm",
+    "s": "50 × 40 cm",
     "u": "./img/022.jpg",
     "p": [
       "#2B5EA7",
@@ -353,12 +353,28 @@
     ]
   },
   {
-    "id": 24,
-    "t": "The Seer",
+    "id": 23,
+    "t": "Self-portrait #09",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 100 cm",
+    "s": "60 × 60 cm",
+    "u": "./img/023.jpg",
+    "p": [
+      "#1A8A7A",
+      "#2BB5A0",
+      "#C0392B",
+      "#8B2500",
+      "#4A4A4A"
+    ]
+  },
+  {
+    "id": 24,
+    "t": "Self-portrait #08",
+    "c": "portrait",
+    "y": "2025",
+    "m": "Acrylic on canvas",
+    "s": "50 × 40 cm",
     "u": "./img/024.jpg",
     "p": [
       "#C0392B",
@@ -370,11 +386,11 @@
   },
   {
     "id": 25,
-    "t": "The Bald Man in Red",
+    "t": "Self-portrait #07",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "85 × 115 cm",
+    "s": "50 × 50 cm",
     "u": "./img/025.jpg",
     "p": [
       "#B83227",
@@ -386,11 +402,11 @@
   },
   {
     "id": 26,
-    "t": "Yellow Halo Portrait",
+    "t": "My son",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 110 cm",
+    "s": "50 × 50 cm",
     "u": "./img/026.jpg",
     "p": [
       "#F2C94C",
@@ -402,11 +418,11 @@
   },
   {
     "id": 27,
-    "t": "Ember Portrait",
+    "t": "Self-portrait #06",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "85 × 110 cm",
+    "s": "40 × 50 cm",
     "u": "./img/027.jpg",
     "p": [
       "#8B1A1A",
@@ -418,11 +434,11 @@
   },
   {
     "id": 28,
-    "t": "The Winding Path",
+    "t": "The River",
     "c": "abstract",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "140 × 90 cm",
+    "m": "Gouache on paper",
+    "s": "42 × 60 cm",
     "u": "./img/028.jpg",
     "p": [
       "#3E2A1A",
@@ -434,11 +450,11 @@
   },
   {
     "id": 29,
-    "t": "Purple Reverie",
+    "t": "My daughter",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 60 cm",
+    "s": "50 × 50 cm",
     "u": "./img/029.jpg",
     "p": [
       "#6B2D8B",
@@ -450,11 +466,11 @@
   },
   {
     "id": 30,
-    "t": "Chromatic Burst",
+    "t": "The Dawn",
     "c": "abstract",
-    "y": "2023",
-    "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "y": "2025",
+    "m": "Gouache on paper",
+    "s": "40 × 54 cm",
     "u": "./img/030.jpg",
     "p": [
       "#F4D03F",
@@ -466,11 +482,11 @@
   },
   {
     "id": 31,
-    "t": "Terrain of Dreams",
+    "t": "The field",
     "c": "abstract",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "130 × 80 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 54 cm",
     "u": "./img/031.jpg",
     "p": [
       "#F0C040",
@@ -482,11 +498,11 @@
   },
   {
     "id": 32,
-    "t": "Silhouette in Red",
+    "t": "Self-portrait #05",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 60 cm",
+    "s": "40 × 30 cm",
     "u": "./img/032.jpg",
     "p": [
       "#C0392B",
@@ -498,11 +514,11 @@
   },
   {
     "id": 33,
-    "t": "Impasto Horizon",
+    "t": "The countryside",
     "c": "abstract",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "130 × 85 cm",
+    "m": "Gouache on paper",
+    "s": "42 × 60 cm",
     "u": "./img/033.jpg",
     "p": [
       "#7D3C98",
@@ -514,11 +530,11 @@
   },
   {
     "id": 34,
-    "t": "Nocturnal Fragments",
+    "t": "Beside the forest",
     "c": "abstract",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "110 × 90 cm",
+    "m": "Gouache on paper",
+    "s": "42 × 60 cm",
     "u": "./img/034.jpg",
     "p": [
       "#1C1C1C",
@@ -530,11 +546,11 @@
   },
   {
     "id": 35,
-    "t": "Standing Together",
+    "t": "Father and son",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "90 × 120 cm",
+    "s": "60 × 80 cm",
     "u": "./img/035.jpg",
     "p": [
       "#E67E22",
@@ -546,11 +562,11 @@
   },
   {
     "id": 36,
-    "t": "Amber Gaze",
+    "t": "Lady in orange",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 60 cm",
+    "s": "50 × 50 cm",
     "u": "./img/036.jpg",
     "p": [
       "#E67E22",
@@ -562,11 +578,11 @@
   },
   {
     "id": 37,
-    "t": "Duality in Crimson",
+    "t": "Sister and brother",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "100 × 70 cm",
+    "s": "60 × 80 cm",
     "u": "./img/037.jpg",
     "p": [
       "#B03A2E",
@@ -578,11 +594,11 @@
   },
   {
     "id": 38,
-    "t": "Blue Contemplation",
+    "t": "Self-portrait #04",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 60 cm",
+    "s": "50 × 50 cm",
     "u": "./img/038.jpg",
     "p": [
       "#2471A3",
@@ -594,11 +610,11 @@
   },
   {
     "id": 39,
-    "t": "Encounter",
+    "t": "Mother and son",
     "c": "portrait",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "100 × 80 cm",
+    "s": "60 × 80 cm",
     "u": "./img/039.jpg",
     "p": [
       "#2E86C1",
@@ -610,11 +626,11 @@
   },
   {
     "id": 40,
-    "t": "Emerald and Amethyst",
+    "t": "Self-portrait #03",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 60 cm",
+    "s": "70 × 55 cm",
     "u": "./img/040.jpg",
     "p": [
       "#7D3C98",
@@ -626,11 +642,11 @@
   },
   {
     "id": 41,
-    "t": "Vivid Fish Portrait",
+    "t": "My son #02",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "80 × 100 cm",
+    "s": "70 × 60 cm",
     "u": "./img/041.jpg",
     "p": [
       "#1A1A1A",
@@ -642,11 +658,11 @@
   },
   {
     "id": 42,
-    "t": "Side Profile in Cool Tones",
+    "t": "Self-portrait #02",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "90 × 70 cm",
+    "s": "70 × 50 cm",
     "u": "./img/042.jpg",
     "p": [
       "#8B6914",
@@ -658,11 +674,11 @@
   },
   {
     "id": 43,
-    "t": "Gray-Green Gaze",
+    "t": "Self-portrait #01",
     "c": "portrait",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "100 × 80 cm",
+    "s": "50 × 50 cm",
     "u": "./img/043.jpg",
     "p": [
       "#C0392B",
@@ -674,11 +690,11 @@
   },
   {
     "id": 44,
-    "t": "Winding Forms",
+    "t": "Spring snakes",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "100 × 120 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/044.jpg",
     "p": [
       "#F1C40F",
@@ -690,11 +706,11 @@
   },
   {
     "id": 45,
-    "t": "Enchanted Wetland",
+    "t": "Spring sky",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "s": "155 × 250 cm",
     "u": "./img/045.jpg",
     "p": [
       "#0A3D0A",
@@ -706,11 +722,11 @@
   },
   {
     "id": 46,
-    "t": "Dreamlike Forest",
+    "t": "Blue morning",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "130 × 100 cm",
+    "s": "150 × 250 cm",
     "u": "./img/046.jpg",
     "p": [
       "#1A1A1A",
@@ -722,11 +738,11 @@
   },
   {
     "id": 47,
-    "t": "Colorful Snake Dance",
+    "t": "A pink day",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "90 × 120 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/047.jpg",
     "p": [
       "#F48FB1",
@@ -738,11 +754,11 @@
   },
   {
     "id": 48,
-    "t": "Mysterious Waters",
+    "t": "Lake surface",
     "c": "abstract",
     "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "120 × 80 cm",
+    "s": "155 × 250 cm",
     "u": "./img/048.jpg",
     "p": [
       "#1B4F72",
@@ -754,11 +770,11 @@
   },
   {
     "id": 49,
-    "t": "Geometric Serpents",
+    "t": "Brothers",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "100 × 80 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/049.jpg",
     "p": [
       "#E53935",
@@ -770,11 +786,11 @@
   },
   {
     "id": 50,
-    "t": "Neon Serpents on Black",
+    "t": "Triple melody",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "110 × 90 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/050.jpg",
     "p": [
       "#0A0A0A",
@@ -786,11 +802,11 @@
   },
   {
     "id": 51,
-    "t": "Dripping Spectrum",
+    "t": "In the fog",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "130 × 90 cm",
+    "s": "150 × 250 cm",
     "u": "./img/051.jpg",
     "p": [
       "#E91E8C",
@@ -802,11 +818,11 @@
   },
   {
     "id": 52,
-    "t": "Explosive Abstract Tension",
+    "t": "Hillside",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "140 × 110 cm",
+    "s": "155 × 250 cm",
     "u": "./img/052.jpg",
     "p": [
       "#0D0D0D",
@@ -818,11 +834,11 @@
   },
   {
     "id": 53,
-    "t": "Entwined Serpents",
+    "t": "Hắc-Kim-Lam Serpents",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "110 × 80 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/053.jpg",
     "p": [
       "#8E44AD",
@@ -834,11 +850,11 @@
   },
   {
     "id": 54,
-    "t": "Silver Snakes on Pink",
+    "t": "Bạch-Lục-Lam Serpents",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "90 × 120 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/054.jpg",
     "p": [
       "#F8BBD0",
@@ -850,11 +866,11 @@
   },
   {
     "id": 55,
-    "t": "Crimson Dusk Drip",
+    "t": "Edge of the forest",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "130 × 90 cm",
+    "s": "140 × 230 cm",
     "u": "./img/055.jpg",
     "p": [
       "#6A1B9A",
@@ -867,11 +883,11 @@
   },
   {
     "id": 56,
-    "t": "Intertwined Chromatic Serpents",
+    "t": "Family",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "100 × 80 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/056.jpg",
     "p": [
       "#FFF9C4",
@@ -883,11 +899,11 @@
   },
   {
     "id": 57,
-    "t": "Geometric Serpents and Fish",
+    "t": "Tam xà",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/057.jpg",
     "p": [
       "#1565C0",
@@ -899,11 +915,11 @@
   },
   {
     "id": 58,
-    "t": "Mysterious Night Landscape",
+    "t": "Dry stream",
     "c": "abstract",
-    "y": "2026",
+    "y": "2025",
     "m": "Acrylic on canvas",
-    "s": "150 × 100 cm",
+    "s": "150 × 250 cm",
     "u": "./img/058.jpg",
     "p": [
       "#0D47A1",
@@ -915,11 +931,11 @@
   },
   {
     "id": 59,
-    "t": "Geometric Amber Serpent",
+    "t": "Joyful",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "100 × 80 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/059.jpg",
     "p": [
       "#EF6C00",
@@ -931,11 +947,11 @@
   },
   {
     "id": 60,
-    "t": "Winding Azure and Rose",
+    "t": "Talk",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "110 × 90 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/060.jpg",
     "p": [
       "#E91E63",
@@ -947,11 +963,11 @@
   },
   {
     "id": 61,
-    "t": "Crimson Serpent",
+    "t": "Đôi xà",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "90 × 120 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/061.jpg",
     "p": [
       "#C0392B",
@@ -963,11 +979,11 @@
   },
   {
     "id": 62,
-    "t": "Circular Serpent Duo",
+    "t": "Duet",
     "c": "zodiac",
     "y": "2024",
     "m": "Acrylic on wood",
-    "s": "80 × 80 cm",
+    "s": "ø 60 cm",
     "u": "./img/062.jpg",
     "p": [
       "#1565C0",
@@ -979,11 +995,11 @@
   },
   {
     "id": 63,
-    "t": "Serpent Mandala",
+    "t": "Song xà",
     "c": "zodiac",
-    "y": "2025",
+    "y": "2024",
     "m": "Acrylic on wood",
-    "s": "Ø 80 cm",
+    "s": "ø 80 cm",
     "u": "./img/063.jpg",
     "p": [
       "#27AE60",
@@ -995,11 +1011,11 @@
   },
   {
     "id": 64,
-    "t": "Blue Duality",
+    "t": "Lục xà, lam xà",
     "c": "zodiac",
-    "y": "2025",
+    "y": "2024",
     "m": "Acrylic on wood",
-    "s": "Ø 80 cm",
+    "s": "ø 60 cm",
     "u": "./img/064.jpg",
     "p": [
       "#1B4F72",
@@ -1011,11 +1027,11 @@
   },
   {
     "id": 65,
-    "t": "Ornate Purple Serpent",
+    "t": "Couple",
     "c": "zodiac",
     "y": "2025",
-    "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/065.jpg",
     "p": [
       "#4A148C",
@@ -1027,11 +1043,11 @@
   },
   {
     "id": 66,
-    "t": "Abstract Strata Horizon",
+    "t": "Land",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "140 × 90 cm",
+    "s": "80 × 100 cm",
     "u": "./img/066.jpg",
     "p": [
       "#311B92",
@@ -1043,11 +1059,11 @@
   },
   {
     "id": 67,
-    "t": "Barren Trees Reflection",
+    "t": "Early morning",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "130 × 90 cm",
+    "s": "110 × 150 cm",
     "u": "./img/067.jpg",
     "p": [
       "#1A1A1A",
@@ -1059,11 +1075,11 @@
   },
   {
     "id": 68,
-    "t": "Shadowed Canopy",
+    "t": "Night Forest",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "120 × 80 cm",
+    "s": "110 × 150 cm",
     "u": "./img/068.jpg",
     "p": [
       "#1A1A1A",
@@ -1075,11 +1091,11 @@
   },
   {
     "id": 69,
-    "t": "Vibrant Terrain",
+    "t": "Winter rice field",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "130 × 90 cm",
+    "s": "90 × 120 cm",
     "u": "./img/069.jpg",
     "p": [
       "#F1C40F",
@@ -1091,11 +1107,11 @@
   },
   {
     "id": 70,
-    "t": "Chromatic Strata",
+    "t": "Late Afternoon",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "140 × 100 cm",
+    "s": "90 × 120 cm",
     "u": "./img/070.jpg",
     "p": [
       "#4A3728",
@@ -1107,11 +1123,11 @@
   },
   {
     "id": 71,
-    "t": "Verdant Twilight",
+    "t": "Into the fog",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "90 × 120 cm",
+    "s": "110 × 150 cm",
     "u": "./img/071.jpg",
     "p": [
       "#2C3E50",
@@ -1123,11 +1139,11 @@
   },
   {
     "id": 72,
-    "t": "Aureate Rift",
+    "t": "Water stream",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "s": "80 × 100 cm",
     "u": "./img/072.jpg",
     "p": [
       "#0D0D0D",
@@ -1139,11 +1155,11 @@
   },
   {
     "id": 73,
-    "t": "Midnight Sparks",
+    "t": "Night storm",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "100 × 100 cm",
+    "s": "50 × 100 cm",
     "u": "./img/073.jpg",
     "p": [
       "#0B0C10",
@@ -1155,11 +1171,11 @@
   },
   {
     "id": 74,
-    "t": "Woven Spectrum",
+    "t": "Rain",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "110 × 80 cm",
+    "s": "50 × 100 cm",
     "u": "./img/074.jpg",
     "p": [
       "#5D4037",
@@ -1171,11 +1187,11 @@
   },
   {
     "id": 75,
-    "t": "Chromatic Forest",
+    "t": "The Light",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "90 × 130 cm",
+    "s": "50 × 100 cm",
     "u": "./img/075.jpg",
     "p": [
       "#000000",
@@ -1187,11 +1203,11 @@
   },
   {
     "id": 76,
-    "t": "Deep Veil",
+    "t": "The forest",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "120 × 85 cm",
+    "s": "80 × 100 cm",
     "u": "./img/076.jpg",
     "p": [
       "#0D0D0D",
@@ -1203,11 +1219,11 @@
   },
   {
     "id": 77,
-    "t": "Luminous Fracture",
+    "t": "The night road",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "130 × 95 cm",
+    "s": "80 × 100 cm",
     "u": "./img/077.jpg",
     "p": [
       "#0D0D0D",
@@ -1219,11 +1235,11 @@
   },
   {
     "id": 78,
-    "t": "Chromatic Drift",
+    "t": "Thunderstorm",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "120 × 80 cm",
+    "s": "80 × 100 cm",
     "u": "./img/078.jpg",
     "p": [
       "#1A237E",
@@ -1236,11 +1252,11 @@
   },
   {
     "id": 79,
-    "t": "Verdant Echoes",
+    "t": "Rice fields",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "100 × 80 cm",
+    "s": "80 × 100 cm",
     "u": "./img/079.jpg",
     "p": [
       "#388E3C",
@@ -1252,11 +1268,11 @@
   },
   {
     "id": 80,
-    "t": "Violet Terrain",
+    "t": "Night",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "110 × 80 cm",
+    "s": "80 × 100 cm",
     "u": "./img/080.jpg",
     "p": [
       "#4A148C",
@@ -1268,11 +1284,11 @@
   },
   {
     "id": 81,
-    "t": "Mountain Reverie",
+    "t": "Skyline",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "s": "100 × 50 cm",
     "u": "./img/081.jpg",
     "p": [
       "#1565C0",
@@ -1284,11 +1300,11 @@
   },
   {
     "id": 82,
-    "t": "Obsidian Whisper",
+    "t": "The sand road",
     "c": "abstract",
-    "y": "2026",
-    "m": "Oil in canvas",
-    "s": "100 × 100 cm",
+    "y": "2024",
+    "m": "Acrylic on canvas",
+    "s": "100 × 50 cm",
     "u": "./img/082.jpg",
     "p": [
       "#9E9E9E",
@@ -1300,11 +1316,11 @@
   },
   {
     "id": 83,
-    "t": "Earthen Haze",
+    "t": "Beside the sea",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "90 × 70 cm",
+    "s": "100 × 200 cm",
     "u": "./img/083.jpg",
     "p": [
       "#757575",
@@ -1316,11 +1332,11 @@
   },
   {
     "id": 84,
-    "t": "Pale Strata",
+    "t": "Dunes",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "100 × 80 cm",
+    "s": "110 × 160 cm",
     "u": "./img/084.jpg",
     "p": [
       "#BDBDBD",
@@ -1334,9 +1350,9 @@
     "id": 85,
     "t": "Azure Guardian",
     "c": "zodiac",
-    "y": "2026",
+    "y": "2024",
     "m": "Mixed media",
-    "s": "35 × 50 cm",
+    "s": "120 × 90 cm",
     "u": "./img/085.jpg",
     "p": [
       "#00897B",
@@ -1348,11 +1364,11 @@
   },
   {
     "id": 86,
-    "t": "Dragon Seal",
+    "t": "Dancing Dragon",
     "c": "zodiac",
     "y": "2024",
     "m": "Acrylic on wood",
-    "s": "25 × 40 cm",
+    "s": "ø 74 cm",
     "u": "./img/086.jpg",
     "p": [
       "#1B5E20",
@@ -1364,11 +1380,11 @@
   },
   {
     "id": 87,
-    "t": "Crimson Ridge",
+    "t": "Sunrise",
     "c": "abstract",
-    "y": "2026",
+    "y": "2024",
     "m": "Acrylic on canvas",
-    "s": "120 × 90 cm",
+    "s": "80 × 100 cm",
     "u": "./img/087.jpg",
     "p": [
       "#1E88E5",
@@ -1380,11 +1396,11 @@
   },
   {
     "id": 88,
-    "t": "Chromatic Dragon",
+    "t": "Blue Dragon",
     "c": "zodiac",
     "y": "2024",
     "m": "Acrylic on wood",
-    "s": "60 × 60 cm",
+    "s": "ø 68 cm",
     "u": "./img/088.jpg",
     "p": [
       "#1A1A1A",
@@ -1396,11 +1412,11 @@
   },
   {
     "id": 89,
-    "t": "Verdant Serpent",
+    "t": "Mother Dragon",
     "c": "zodiac",
     "y": "2024",
     "m": "Acrylic on wood",
-    "s": "55 × 55 cm",
+    "s": "ø 72 cm",
     "u": "./img/089.jpg",
     "p": [
       "#27AE60",
@@ -1412,11 +1428,11 @@
   },
   {
     "id": 90,
-    "t": "Amethyst Guardian",
+    "t": "Dragon with jade ball",
     "c": "zodiac",
     "y": "2024",
     "m": "Acrylic on wood",
-    "s": "70 × 50 cm",
+    "s": "ø 70 cm",
     "u": "./img/090.jpg",
     "p": [
       "#8E44AD",
@@ -1428,11 +1444,11 @@
   },
   {
     "id": 91,
-    "t": "Galloping in Blue",
+    "t": "Bính ngọ #07",
     "c": "zodiac",
     "y": "2026",
-    "m": "Acrylic on canvas",
-    "s": "130 × 90 cm",
+    "m": "Gouache on paper",
+    "s": "39 × 54 cm",
     "u": "./img/091.jpg",
     "p": [
       "#2980B9",
@@ -1444,11 +1460,11 @@
   },
   {
     "id": 92,
-    "t": "Dream Pair",
+    "t": "Bính ngọ #06",
     "c": "zodiac",
     "y": "2026",
-    "m": "Acrylic on canvas",
-    "s": "120 × 80 cm",
+    "m": "Gouache on paper",
+    "s": "41 × 60 cm",
     "u": "./img/092.jpg",
     "p": [
       "#8E44AD",
@@ -1460,11 +1476,11 @@
   },
   {
     "id": 93,
-    "t": "Chromatic Grid",
+    "t": "Mountain wind",
     "c": "abstract",
     "y": "2026",
     "m": "Acrylic on canvas",
-    "s": "100 × 100 cm",
+    "s": "110 × 160 cm",
     "u": "./img/093.jpg",
     "p": [
       "#1A1A1A",
@@ -1476,11 +1492,11 @@
   },
   {
     "id": 94,
-    "t": "Violet Equines",
+    "t": "Bính ngọ #05",
     "c": "zodiac",
     "y": "2026",
-    "m": "Acrylic on canvas",
-    "s": "120 × 85 cm",
+    "m": "Gouache on paper",
+    "s": "42 × 60 cm",
     "u": "./img/094.jpg",
     "p": [
       "#8E44AD",
@@ -1492,11 +1508,11 @@
   },
   {
     "id": 95,
-    "t": "Triad of Hues",
+    "t": "Bính ngọ #04",
     "c": "zodiac",
     "y": "2026",
-    "m": "Acrylic on canvas",
-    "s": "110 × 80 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/095.jpg",
     "p": [
       "#F48FB1",
@@ -1508,11 +1524,11 @@
   },
   {
     "id": 96,
-    "t": "Twilight Steeds",
+    "t": "Bính ngọ #03 Steeds",
     "c": "zodiac",
     "y": "2026",
-    "m": "Acrylic on canvas",
-    "s": "120 × 85 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/096.jpg",
     "p": [
       "#5D4037",
@@ -1524,11 +1540,11 @@
   },
   {
     "id": 97,
-    "t": "Chromatic Strata",
+    "t": "The Edge of night",
     "c": "abstract",
     "y": "2026",
     "m": "Acrylic on canvas",
-    "s": "100 × 70 cm",
+    "s": "100 × 100 cm",
     "u": "./img/097.jpg",
     "p": [
       "#1A1A1A",
@@ -1540,11 +1556,11 @@
   },
   {
     "id": 98,
-    "t": "Chromatic Lattice",
+    "t": "The place of return",
     "c": "abstract",
     "y": "2026",
     "m": "Acrylic on canvas",
-    "s": "90 × 90 cm",
+    "s": "100 × 160 cm",
     "u": "./img/098.jpg",
     "p": [
       "#1A1A1A",
@@ -1556,11 +1572,11 @@
   },
   {
     "id": 99,
-    "t": "Twin Steeds",
+    "t": "Bính ngọ #02",
     "c": "zodiac",
     "y": "2026",
-    "m": "Acrylic on canvas",
-    "s": "120 × 80 cm",
+    "m": "Gouache on paper",
+    "s": "40 × 55 cm",
     "u": "./img/099.jpg",
     "p": [
       "#27AE60",
@@ -1572,11 +1588,11 @@
   },
   {
     "id": 100,
-    "t": "Stratified Horizon",
-    "c": "landscape",
+    "t": "Grass field",
+    "c": "abstract",
     "y": "2026",
     "m": "Acrylic on canvas",
-    "s": "140 × 70 cm",
+    "s": "50 × 40 cm",
     "u": "./img/100.jpg",
     "p": [
       "#1B3A5C",

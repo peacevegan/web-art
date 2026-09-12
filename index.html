@@ -4,15 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selected Works</title>
+    <title>Tạ Đình Khiêm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { merriweatherSans: ['Merriweather Sans', 'sans-serif'] } } } }
+        tailwind.config = { theme: { extend: { fontFamily: { display: ['Fraunces', 'serif'], sans: ['Montserrat', 'sans-serif'] } } } }
     </script>
     <style>
+        :root {
+            --display-font: 'Fraunces';
+            --accent: #E67E22;
+            --selection-fg: #171006;
+            --scrollbar: rgba(240, 233, 220, .14);
+            --scrollbar-hover: rgba(240, 233, 220, .3);
+            --img-radius: 0px;
+            --panel-bg: #0A0810
+        }
         * {
             margin: 0;
             padding: 0;
@@ -20,10 +29,21 @@
         }
 
         body {
-            font-family: 'Merriweather Sans', sans-serif;
-            background: #F5F2ED;
-            color: #1a1a1a;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-kerning: normal;
+            background: #0E0C12;
+            color: #E8E1D4;
             -webkit-font-smoothing: antialiased
+        }
+
+        .font-display {
+            font-family: var(--display-font), serif
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--selection-fg)
         }
 
         ::-webkit-scrollbar {
@@ -31,16 +51,16 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #F5F2ED
+            background: #0E0C12
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, .12);
+            background: var(--scrollbar);
             border-radius: 3px
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, .25)
+            background: var(--scrollbar-hover)
         }
 
         .masonry {
@@ -83,11 +103,13 @@
             width: 100%;
             height: auto;
             display: block;
-            transition: transform .7s cubic-bezier(.25, .46, .45, .94)
+            border-radius: var(--img-radius);
+            transition: transform .7s cubic-bezier(.25, .46, .45, .94), filter .5s
         }
 
         .mi:hover img {
-            transform: scale(1.02)
+            transform: scale(1.03);
+            filter: saturate(1.05)
         }
 
         @keyframes fu {
@@ -96,17 +118,17 @@
                 transform: translateY(0)
             }
         }
-
         .ch {
-            font-family: 'Merriweather Sans', sans-serif;
             font-weight: 700;
             font-size: 15px;
-            color: #1a1a1a;
-            letter-spacing: .02em
+            color: #F0E9DC;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            font-size: 12px
         }
 
         .cl {
-            color: #999;
+            color: #A29881;
             transition: color .25s;
             cursor: pointer;
             font-weight: 500;
@@ -114,51 +136,75 @@
         }
 
         .cl:hover {
-            color: #555
+            color: #F0E9DC
         }
 
         .cl.on {
-            color: #C0392B;
+            color: #E67E22;
             font-weight: 600
         }
 
         .fl {
-            color: #999;
+            color: #8F8672;
             transition: color .25s;
             cursor: pointer;
             font-weight: 500;
             font-size: 12px;
-            /* text-transform: uppercase; */
             letter-spacing: .06em
         }
 
         .fl:hover {
-            color: #555
+            color: #C9C0AC
         }
 
         .fl.on {
-            color: #C0392B;
+            color: #E67E22;
             font-weight: 600
         }
 
         .nl {
-            color: #999;
+            position: relative;
+            color: #A79C86;
             transition: color .25s;
-            font-weight: 600;
-            font-size: 16px
+            font-weight: 500;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            padding-bottom: 3px
+        }
+
+        .nl::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: #E67E22;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s
         }
 
         .nl:hover {
-            color: #1a1a1a
+            color: #F0E9DC
         }
 
         .nl.cur {
-            color: #1a1a1a
+            color: #E67E22
+        }
+
+        .nl.cur::after {
+            transform: scaleX(1)
         }
 
         .dv {
             height: 1px;
-            background: rgba(0, 0, 0, .08)
+            background: rgba(240, 233, 220, .09)
+        }
+
+        .lb {
+            background: #0E0C12
         }
 
         .lb {
@@ -184,7 +230,7 @@
         .ip {
             position: relative;
             overflow: hidden;
-            background: #1a1a1a
+            background: var(--panel-bg)
         }
 
         .ip::before,
@@ -264,9 +310,9 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(26, 26, 26, .7);
+            background: var(--arrow-bg);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .12);
             color: #fff;
             display: flex;
             align-items: center;
@@ -276,7 +322,7 @@
         }
 
         .la:hover {
-            background: rgba(26, 26, 26, .9);
+            background: var(--arrow-bg-hover);
             transform: translateY(-50%) scale(1.08)
         }
 
@@ -305,88 +351,6 @@
             transform: scale(1) translateY(0)
         }
 
-        .fi {
-            width: 100%;
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, .12);
-            padding: 11px 13px;
-            font-family: 'Merriweather Sans', sans-serif;
-            font-size: 13px;
-            color: #1a1a1a;
-            transition: border-color .25s;
-            outline: none
-        }
-
-        .fi:focus {
-            border-color: #C0392B
-        }
-
-        .fi::placeholder {
-            color: #bbb
-        }
-
-        .fs {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 32px
-        }
-
-        .br {
-            background: #C0392B;
-            color: #fff;
-            font-family: 'Merriweather Sans', sans-serif;
-            font-weight: 600;
-            font-size: 13px;
-            letter-spacing: .02em;
-            padding: 11px 28px;
-            border: none;
-            cursor: pointer;
-            transition: background .25s
-        }
-
-        .br:hover {
-            background: #A93226
-        }
-
-        .bs {
-            background: #C0392B;
-            color: #fff;
-            font-family: 'Merriweather Sans', sans-serif;
-            font-weight: 600;
-            font-size: 11px;
-            letter-spacing: .04em;
-            text-transform: uppercase;
-            padding: 9px 18px;
-            border: none;
-            cursor: pointer;
-            transition: background .25s
-        }
-
-        .bs:hover {
-            background: #A93226
-        }
-
-        .bo {
-            background: transparent;
-            color: #fff;
-            font-family: 'Merriweather Sans', sans-serif;
-            font-weight: 600;
-            font-size: 11px;
-            letter-spacing: .04em;
-            text-transform: uppercase;
-            padding: 9px 18px;
-            border: 1px solid rgba(255, 255, 255, .25);
-            cursor: pointer;
-            transition: all .25s
-        }
-
-        .bo:hover {
-            border-color: #fff;
-            background: rgba(255, 255, 255, .08)
-        }
-
         .mm {
             transform: translateX(100%);
             transition: transform .4s cubic-bezier(.16, 1, .3, 1)
@@ -396,13 +360,24 @@
             transform: translateX(0)
         }
 
+        .ub {
+            position: relative;
+            overflow: hidden
+        }
+
+        .ub::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='https://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+        }
         .ftl {
-            color: #999;
+            color: #A79C86;
             transition: color .25s
         }
 
         .ftl:hover {
-            color: #fff
+            color: #171006;
         }
 
         .toast {
@@ -410,11 +385,11 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(20px);
-            background: #1a1a1a;
-            color: #fff;
+            background: #2a221b;
+            color: #171006;
             padding: 14px 28px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             z-index: 200;
             opacity: 0;
             transition: opacity .3s, transform .3s;
@@ -427,47 +402,119 @@
         }
 
         .ub {
-            background: linear-gradient(135deg, #8d123a 0%, #0e5fc7 100%);
-            /* background: linear-gradient(135deg, #8f5597 0%, #df5534 100%); */
-            position: relative;
-            overflow: hidden
+            background: linear-gradient(120deg, #230714 0%, #43121F 45%, #6B2A0E 100%)
         }
 
-        .ub::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='https://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+        .fi {
+            width: 100%;
+            background: #17131F;
+            border: 1px solid rgba(240,233,220,.16);
+            padding: 11px 13px;
+            font-family: inherit;
+            font-size: 13px;
+            color: #E8E1D4;
+            transition: border-color .25s;
+            outline: none
+        }
+
+        .fi:focus {
+            border-color: #E67E22
+        }
+
+        .fi::placeholder {
+            color: #6E6659
+        }
+
+        .fs {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A79C86' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px
+        }
+
+        .br {
+            background: #E67E22;
+            color: #171006;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: .02em;
+            padding: 11px 28px;
+            border: none;
+            cursor: pointer;
+            transition: background .25s
+        }
+
+        .br:hover {
+            background: #F39C12
+        }
+
+        .bs {
+            background: #E67E22;
+            color: #fff;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            padding: 9px 18px;
+            border: none;
+            cursor: pointer;
+            transition: background .25s
+        }
+
+        .bs:hover {
+            background: #F39C12
+        }
+
+        .bo {
+            background: transparent;
+            color: #fff;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            padding: 9px 18px;
+            border: 1px solid rgba(255,255,255,.25);
+            cursor: pointer;
+            transition: all .25s
+        }
+
+        .bo:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, .08)
         }
     </style>
 </head>
 
-<body class="font-merriweatherSans">
+<body>
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#F5F2ED]/92 backdrop-blur-md">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0E0C12]/92 backdrop-blur-md">
         <div class="max-w-[1440px] mx-auto px-5 md:px-10 h-20 flex items-center justify-between">
             <a href="#"
-                class="font-merriweatherSans text-4xl font-bold text-[#1a1a1a] hover:text-[#8d123a] transition-colors">Tạ
+                class="font-display text-4xl font-bold text-[#EFE9DD] hover:text-[#E67E22] transition-colors">Tạ
                 Đình Khiêm</a>
             <nav class="hidden md:flex items-center gap-8">
-                <a href="#works" class="nl cur">Selected Works</a>
-                <a href="#resume" class="nl">About</a>
-                <a href="#contact" class="nl">Contact</a>
+                <a href="#works" class="nl font-bold cur">Selected Works</a>
+                <a href="#resume" class="nl font-bold">About</a>
+                <a href="#contact" class="nl font-bold">Contact</a>
             </nav>
-            <button id="menuBtn" class="md:hidden text-[#999] hover:text-[#1a1a1a] transition-colors"><iconify-icon
+            <button id="menuBtn" class="md:hidden text-[#A79C86] hover:text-[#EFE9DD] transition-colors"><iconify-icon
                     icon="lucide:menu" width="22"></iconify-icon></button>
         </div>
         <div class="dv"></div>
     </header>
 
-    <div id="mobileMenu" class="mm fixed inset-0 z-[60] bg-[#F5F2ED] flex flex-col items-center justify-center gap-8">
+    <div id="mobileMenu" class="mm fixed inset-0 z-[60] bg-[#0E0C12] flex flex-col items-center justify-center gap-8">
         <button id="closeMenu"
-            class="absolute top-4 right-5 text-[#999] hover:text-[#1a1a1a] transition-colors"><iconify-icon
+            class="absolute top-4 right-5 text-[#A79C86] hover:text-[#EFE9DD] transition-colors"><iconify-icon
                 icon="lucide:x" width="24"></iconify-icon></button>
-        <a href="#works" class="text-2xl font-merriweatherSans font-bold tracking-wide text-[#1a1a1a] ml">Selected
+        <a href="#works" class="text-2xl font-display font-bold tracking-wide text-[#EFE9DD] ml">Selected
             Works</a>
-        <a href="#resume" class="text-2xl font-merriweatherSans font-bold tracking-wide text-[#1a1a1a] ml">About</a>
-        <a href="#contact" class="text-2xl font-merriweatherSans font-bold tracking-wide text-[#1a1a1a] ml">Contact</a>
+        <a href="#resume" class="text-2xl font-display font-bold tracking-wide text-[#EFE9DD] ml">About</a>
+        <a href="#contact" class="text-2xl font-display font-bold tracking-wide text-[#EFE9DD] ml">Contact</a>
     </div>
 
     <main class="pt-[76px]">
@@ -475,8 +522,8 @@
         <!-- Upcoming Exhibition -->
         <section class="ub">
             <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-10 md:py-14 relative z-10">
-                <p class="text-white/60 text-[14px] font-bold uppercase tracking-[.15em] mb-3">Upcoming Exhibition</p>
-                <h2 class="font-merriweatherSans text-2xl md:text-4xl font-bold text-white tracking-tight mb-3">
+                <p class="text-white/60 text-[14px] font-bold uppercase tracking-[.12em] mb-3">Upcoming Exhibition</p>
+                <h2 class="font-display text-2xl md:text-4xl font-bold text-white tracking-tight mb-3">
                     Chromatic
                     Entanglements</h2>
                 <p class="text-white/60 text-sm md:text-[15px] leading-relaxed max-w-xl mb-5">A solo exhibition
@@ -499,32 +546,33 @@
             <div class="space-y-2.5">
                 <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
                     <span class="ch mr-1">Paintings</span>
-                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="text-[#5E5768] font-light">/</span>
                     <span class="cl px-1.5 py-0.5" data-fc="abstract">Abstract</span>
-                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="text-[#5E5768] font-light">/</span>
                     <span class="cl px-1.5 py-0.5" data-fc="portrait">Portrait</span>
-                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="text-[#5E5768] font-light">/</span>
                     <span class="cl px-1.5 py-0.5" data-fc="zodiac">Zodiac</span>
                 </div>
                 <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
                     <span class="ch mr-1">Sculptures</span>
-                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="text-[#5E5768] font-light">/</span>
                     <span class="cl px-1.5 py-0.5" data-fc="sculpt-animal">Animals</span>
                 </div>
                 <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-                    <!-- <span class="text-[#1a1a1a] text-[12px] font-bold tracking-[.1em] mr-1">Year</span> -->
+                    <!-- <span class="text-[#EFE9DD] text-[12px] font-bold tracking-[.1em] mr-1">Year</span> -->
                     <span class="ch mr-1">Year</span>
-                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="text-[#5E5768] font-light">/</span>
                     <span class="fl px-1.5 py-0.5" data-fy="2026">2026</span>
                     <span class="fl px-1.5 py-0.5" data-fy="2025">2025</span>
                     <span class="fl px-1.5 py-0.5" data-fy="2024">2024</span>
                 </div>
                 <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-                    <!-- <span class="text-[#bbb] text-[12px] font-bold tracking-[.1em] mr-1">Medium</span> -->
+                    <!-- <span class="text-[#6E6659] text-[12px] font-bold tracking-[.1em] mr-1">Medium</span> -->
                     <span class="ch mr-1">Medium</span>
-                    <span class="text-[#ccc] font-light">/</span>
+                    <span class="text-[#5E5768] font-light">/</span>
                     <span class="fl px-1.5 py-0.5" data-fm="Acrylic on canvas">Acrylic on canvas</span>
                     <span class="fl px-1.5 py-0.5" data-fm="Acrylic on wood">Acrylic on wood</span>
+                    <span class="fl px-1.5 py-0.5" data-fm="Gouache on paper">Gouache on paper</span>
                     <span class="fl px-1.5 py-0.5" data-fm="Mixed media">Mixed media</span>
                 </div>
             </div>
@@ -535,31 +583,31 @@
         <section class="max-w-[1440px] mx-auto px-5 md:px-10 py-6">
             <div class="masonry" id="gal"></div>
             <div id="emp" class="hidden py-24 text-center">
-                <p class="text-[#bbb] text-sm">No works match the selected filters.</p>
+                <p class="text-[#6E6659] text-sm">No works match the selected filters.</p>
             </div>
         </section>
 
         <!-- Resume -->
-        <section id="resume" class="bg-[#EDEAE5]">
+        <section id="resume" class="bg-[#16131D]">
             <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-16 md:py-20">
-                <h2 class="font-merriweatherSans text-3xl md:text-4xl font-bold tracking-tight mb-12 text-[#1a1a1a]">
-                    About</h2>
+                <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-12 text-[#EFE9DD]">
+                    Artistic Journey</h2>
 
                 <!-- Artist portrait + quote -->
                 <div class="grid md:grid-cols-[280px_1fr] gap-10 md:gap-14 mb-16">
-                    <div class="aspect-[3/4] bg-[#D5D0C8] overflow-hidden flex-shrink-0">
+                    <div class="aspect-[3/4] bg-[#2A2433] overflow-hidden flex-shrink-0">
                         <img src="./img/024.jpg" alt="Artist"
                             class="w-full h-full object-cover grayscale contrast-110 opacity-80">
                     </div>
                     <div class="flex flex-col justify-center">
                         <blockquote
-                            class="font-merriweatherSans text-xl md:text-2xl font-medium leading-relaxed text-[#444] border-l-2 border-[#C0392B] pl-6 mb-8">
-                            "The path of the mind is contemplation—it is fragments of emotion that take shape, gathered
+                            class="font-display text-xl md:text-2xl font-light italic leading-[1.4] text-[#C9C0B0] border-l-2 border-[#E67E22] pl-6 mb-8 max-w-[60ch]">
+                            “The path of the mind is contemplation—it is fragments of emotion that take shape, gathered
                             and sifted through each passing day. To me, abstraction is actually something very concrete,
-                            something that can be arranged on canvas and 'colored' in. Every way of seeing is merely a
+                            something that can be arranged on canvas and ‘colored’ in. Every way of seeing is merely a
                             personal choice. In the end, we all must forever search for the path we most want to take,
-                            to walk it, to experience it, and to put our hearts into it."</blockquote>
-                        <div class="space-y-4 text-sm text-[#666] leading-relaxed">
+                            to walk it, to experience it, and to put our hearts into it.”</blockquote>
+                        <div class="space-y-4 text-[15px] leading-[1.45] text-[#A79E8E] max-w-[70ch]">
                             <p>He was born into a family with a rich artistic tradition, with many relatives being
                                 painters. However, instead of relying on that advantage, he chose his own path and sees
                                 it as both motivation and, at times, pressure to overcome and assert his own identity.
@@ -580,76 +628,138 @@
 
                 <!-- Studio -->
                 <div class="mb-16">
-                    <h3 class="font-merriweatherSans text-xl font-bold tracking-tight mb-6 text-[#1a1a1a]">Studio</h3>
+                    <h3 class="font-display text-3xl font-bold tracking-tight mb-6 text-[#EFE9DD]">Studio</h3>
                     <div class="grid md:grid-cols-3 gap-4">
-                        <div class="aspect-[4/3] bg-[#D5D0C8] overflow-hidden"><img src="./img/048.jpg" alt="Studio"
+                        <div class="aspect-[4/3] bg-[#2A2433] overflow-hidden"><img src="./img/048.jpg" alt="Studio"
                                 class="w-full h-full object-cover opacity-100 hover:opacity-90 transition-opacity duration-500">
                         </div>
-                        <div class="aspect-[4/3] bg-[#D5D0C8] overflow-hidden"><img src="./img/051.jpg" alt="Studio"
+                        <div class="aspect-[4/3] bg-[#2A2433] overflow-hidden"><img src="./img/051.jpg" alt="Studio"
                                 class="w-full h-full object-cover opacity-100 hover:opacity-90 transition-opacity duration-500">
                         </div>
-                        <div class="aspect-[4/3] bg-[#D5D0C8] overflow-hidden"><img src="./img/011.jpg" alt="Studio"
+                        <div class="aspect-[4/3] bg-[#2A2433] overflow-hidden"><img src="./img/011.jpg" alt="Studio"
                                 class="w-full h-full object-cover opacity-100 hover:opacity-90 transition-opacity duration-500">
                         </div>
                     </div>
-                    <p class="text-sm text-[#888] mt-4 leading-relaxed max-w-2xl">The studio in Hanoi houses
+                    <p class="text-[15px] text-[#857D6F] mt-4 leading-[1.45] max-w-[70ch]">The studio in Hanoi houses
                         large-scale canvases, wood panels, and an extensive pigment collection. Works are developed in
                         series, often over several months, allowing layers to build organically.</p>
                 </div>
                 <div class="dv mb-14"></div>
 
-                <!-- Education -->
-                <div class="mb-16">
-                    <h3 class="font-merriweatherSans text-xl font-bold tracking-tight mb-6 text-[#1a1a1a]">Education
-                    </h3>
-                    <div class="space-y-4 text-sm">
-                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
-                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2000 – 2005</span>
-                            <div>
-                                <p class="font-semibold text-[#1a1a1a]">BA, Fine Arts</p>
-                                <p class="text-[#888]">Vietnam University of Fine Arts — Paintings</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="dv mb-14"></div>
-
-                <!-- Exhibitions -->
+                <!-- Education and Exhibitions -->
                 <div>
-                    <h3 class="font-merriweatherSans text-xl font-bold tracking-tight mb-6 text-[#1a1a1a]">Selected
-                        Exhibitions
-                    </h3>
-                    <div class="space-y-4 text-sm">
+                    <h3 class="font-display text-3xl font-bold tracking-tight mb-6 text-[#EFE9DD]">Education and Exhibitions</h3>
+                    <div class="space-y-4 text-[15px] leading-[1.45]">
                         <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
-                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2020</span>
+                                class="text-[#E67E22] font-semibold md:w-32 flex-shrink-0">2005</span>
                             <div>
-                                <p class="font-semibold text-[#1a1a1a]">"To be continued" <span
-                                        class="text-[#888] font-normal">(Solo)</span></p>
-                                <p class="text-[#888]">Eight Gallery, 8 Phùng Khắc Khoan Street, Ho Chi Minh City</p>
+                                <p class="text-[#EFE9DD]">Graduated Hanoi Fine Arts University.</p>
                             </div>
                         </div>
                         <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
-                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2019</span>
+                                class="text-[#E67E22] font-semibold md:w-32 flex-shrink-0">2006</span>
                             <div>
-                                <p class="font-semibold text-[#1a1a1a]">"Art in the Forest - Summer 2019" <span
-                                        class="text-[#888] font-normal">(Group)</span></p>
-                                <p class="text-[#888]">Flamingo Dai Lai Resort</p>
+                                <p class="text-[#EFE9DD]">Group exhibition “Half of year” in Dong Phong
+                                    gallery, Hanoi, Vietnam.</p>
+                                <p class="text-[#EFE9DD]">Group exhibition “other side” in Maison Des
+                                    Arts, Hanoi, Vietnam.</p>
                             </div>
                         </div>
                         <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
-                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2015</span>
+                                class="text-[#E67E22] font-semibold md:w-32 flex-shrink-0">2007</span>
                             <div>
-                                <p class="font-semibold text-[#1a1a1a]">Solo Exhibition at Đông Phong Gallery <span
-                                        class="text-[#888] font-normal">(Solo)</span></p>
-                                <p class="text-[#888]">Đông Phong Gallery</p>
+                                <p class="text-[#EFE9DD]">Solo exhibition “In my mind” in Dong Phong
+                                    gallery, Hanoi, Vietnam.</p>
                             </div>
                         </div>
                         <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
-                                class="text-[#C0392B] font-semibold md:w-32 flex-shrink-0">2000</span>
+                                class="text-[#E67E22] font-semibold md:w-32 flex-shrink-0">2008</span>
                             <div>
-                                <p class="font-semibold text-[#1a1a1a]">"Untitled"<span
-                                        class="text-[#888] font-normal">(Group)</span></p>
-                                <p class="text-[#888]">Vietnam Fine Arts Museum, Hanoi</p>
+                                <p class="text-[#EFE9DD]">Group exhibition “Vietnam Emerging Generation”
+                                    in Maya gallery, London, UK.</p>
+                                <p class="text-[#EFE9DD]">Group exhibition “Duet” in Mai gallery, Hanoi,
+                                    VN.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2009</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “CUONG, KHIEM, VU” in Vietnam
+                                    Fine Art Museum, Hanoi.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2010</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “K44” in Viet Art Centre,
+                                    Hanoi, VN.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2011</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “Objects of Meditation” – works
+                                    of art from Zoltán Bodnár collection at Regional Art Center Hungary.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2012</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “Live with Passion” – Abstract
+                                    works of art from Zoltán Bodnár collection at B55 Contemporary Gallery.</p>
+                                <p class="text-[#EFE9DD]">Group exhibition “festival for Young Artist of
+                                    Vietnam” in Hanoi, Vietnam.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2013</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “Korean-Vietnam friendship
+                                    special exhibition” in Viet art centre, Hanoi.</p>
+                                <p class="text-[#EFE9DD]">Group exhibition in Affordable Art Fair in Hong
+                                    Kong (working with Asian Art de Vivre).</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2014</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “Korean-Vietnam friendship
+                                    special exhibition”, Kwangju, Korea.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2016</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “YU YU BLUE VIETNAM” in Vietnam
+                                    Fine Art Museum, Hanoi, Vietnam.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2019</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “ART IN THE FOREST” in Flamingo
+                                    DAI LAI, Vietnam.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2020</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Solo exhibition “To Be continued” in Eight
+                                    gallery, Ho Chi Minh city, Vietnam.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2021</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “Walk with Tan Suu” in Mai
+                                    Gallery Hanoi, Vietnam.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6"><span
+                                class="text-[#E67E22] md:w-32 flex-shrink-0">2022</span>
+                            <div>
+                                <p class="text-[#EFE9DD]">Group exhibition “Toward to border” tại 42 Yet
+                                    Kieu street, Hanoi, Vietnam.</p>
                             </div>
                         </div>
                     </div>
@@ -659,50 +769,50 @@
     </main>
 
     <!-- Enquiry section -->
-    <section id="enquiry" class="bg-[#E5E2DC]">
+    <section id="enquiry" class="bg-[#1B1724]">
         <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-16 md:py-20">
-            <h2 class="font-merriweatherSans text-3xl font-bold tracking-tight mb-2 text-[#1a1a1a]">Enquiry</h2>
-            <p class="text-[#999] text-sm mb-10">Interested in a work? Let us know and we'll get back to you shortly.
+            <h2 class="font-display text-3xl font-bold tracking-tight mb-2 text-[#EFE9DD]">Enquiry</h2>
+            <p class="text-[#A79C86] text-[15px] leading-[1.45] mb-10">Interested in a work? Let us know and we’ll get back to you shortly.
             </p>
             <form id="eqFormBot" class="grid md:grid-cols-2 gap-5 max-w-3xl">
-                <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Name
+                <div><label class="block text-[11px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-2">Name
                         *</label><input type="text" name="name" class="fi" placeholder="Your name" required></div>
-                <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Email
+                <div><label class="block text-[11px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-2">Email
                         *</label><input type="email" name="email" class="fi" placeholder="your@email.com" required>
                 </div>
-                <div><label class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Artwork of
+                <div><label class="block text-[11px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-2">Artwork of
                         Interest</label><select id="aSel" name="artwork" class="fi fs">
                         <option value="">— Select a work —</option>
                     </select></div>
                 <div><label
-                        class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Phone</label><input
+                        class="block text-[11px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-2">Phone</label><input
                         type="tel" name="phone" class="fi" placeholder="+1 (555) 000-0000"></div>
                 <div class="md:col-span-2"><label
-                        class="block text-[11px] font-bold text-[#888] uppercase tracking-[.1em] mb-2">Message / Asking
+                        class="block text-[11px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-2">Message / Asking
                         Price</label><textarea name="message" class="fi" rows="5"
-                        placeholder="Please describe your interest, ask about pricing, or leave any questions..."></textarea>
+                        placeholder="Please describe your interest, ask about pricing, or leave any questions…"></textarea>
                 </div>
                 <div class="md:col-span-2"><button type="submit" class="br">Send Enquiry</button></div>
             </form>
         </div>
     </section>
 
-    <footer id="contact" class="bg-[#1a1a1a]">
+    <footer id="contact" class="bg-[#EFE9DD]">
         <div class="max-w-[1440px] mx-auto px-5 md:px-10 py-8">
-            <div class="flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px]">
-                <a href="#" class="ftl flex items-left gap-2"><iconify-icon icon="lucide:facebook"
-                        width="16"></iconify-icon>Facebook</a>
-                <a href="mailto:artist@example.com" class="ftl flex items-left gap-2"><iconify-icon icon="lucide:mail"
-                        width="16"></iconify-icon>Email</a>
+            <div class="flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px] text-[#A79C86] hover:text-[#EFE9DD]">
+                <a href="https://www.facebook.com/ta.d.khiem/" class="ftl flex items-left gap-2"><iconify-icon icon="lucide:facebook"
+                        width="16"></iconify-icon>Personal</a>
+                <a href="https://www.facebook.com/jiuart" class="ftl flex items-left gap-2"><iconify-icon icon="lucide:facebook"
+                        width="16"></iconify-icon>Jiu Art</a>
             </div>
         </div>
     </footer>
 
     <!-- Lightbox -->
-    <div id="lb" class="lb fixed inset-0 z-[70] bg-[#F5F2ED] flex flex-col">
+    <div id="lb" class="lb fixed inset-0 z-[70] bg-[#0E0C12] flex flex-col">
         <div class="flex items-center justify-between px-4 md:px-8 h-14 flex-shrink-0">
-            <span id="lbCt" class="text-[#999] text-[13px] font-medium tabular-nums"></span>
-            <button id="clLb" class="text-[#999] hover:text-[#1a1a1a] transition-colors"><iconify-icon icon="lucide:x"
+            <span id="lbCt" class="text-[#A79C86] text-[13px] font-medium tabular-nums"></span>
+            <button id="clLb" class="text-[#A79C86] hover:text-[#EFE9DD] transition-colors"><iconify-icon icon="lucide:x"
                     width="24"></iconify-icon></button>
         </div>
         <div class="flex-1 flex flex-col md:flex-row items-stretch overflow-hidden min-h-0">
@@ -720,20 +830,20 @@
                 <div class="p3"></div>
                 <div class="ic">
                     <h3 id="lbTi"
-                        class="font-merriweatherSans text-xl md:text-3xl font-bold tracking-tight leading-tight mb-3 md:mb-6">
+                        class="font-display text-xl md:text-3xl font-bold tracking-tight leading-tight mb-3 md:mb-6">
                     </h3>
                     <div class="grid grid-cols-2 gap-x-4 gap-y-1 md:block md:space-y-4 text-[13px]">
-                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.15em]">Year</span>
+                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.12em]">Year</span>
                             <p id="lbYr" class="text-white/90 mt-1 font-medium"></p>
                         </div>
-                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.15em]">Medium</span>
+                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.12em]">Medium</span>
                             <p id="lbMd" class="text-white/90 mt-1 font-medium"></p>
                         </div>
-                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.15em]">Size</span>
+                        <div><span class="text-white/40 text-[10px] font-bold uppercase tracking-[.12em]">Size</span>
                             <p id="lbSz" class="text-white/90 mt-1 font-medium"></p>
                         </div>
                         <div><span
-                                class="text-white/40 text-[10px] font-bold uppercase tracking-[.15em]">Category</span>
+                                class="text-white/40 text-[10px] font-bold uppercase tracking-[.12em]">Category</span>
                             <p id="lbCa" class="text-white/90 mt-1 font-medium"></p>
                         </div>
                     </div>
@@ -755,25 +865,25 @@
 
     <!-- Enquiry Popup -->
     <div id="eqP" class="ep fixed inset-0 z-[80] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="ei bg-[#F5F2ED] w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div class="ei bg-[#0E0C12] w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between px-6 pt-6 pb-4">
-                <h3 class="font-merriweatherSans text-xl font-bold tracking-tight">Enquiry</h3>
-                <button id="clEq" class="text-[#999] hover:text-[#1a1a1a] transition-colors"><iconify-icon
+                <h3 class="font-display text-xl font-bold tracking-tight">Enquiry</h3>
+                <button id="clEq" class="text-[#A79C86] hover:text-[#EFE9DD] transition-colors"><iconify-icon
                         icon="lucide:x" width="22"></iconify-icon></button>
             </div>
             <div class="px-6 pb-6">
-                <p id="eqAr" class="text-[13px] text-[#C0392B] font-semibold mb-5"></p>
+                <p id="eqAr" class="text-[13px] text-[#E67E22] font-semibold mb-5"></p>
                 <form id="eqF" class="space-y-4">
-                    <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Name
+                    <div><label class="block text-[10px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-1.5">Name
                             *</label><input type="text" name="name" class="fi" required></div>
-                    <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Email
+                    <div><label class="block text-[10px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-1.5">Email
                             *</label><input type="email" name="email" class="fi" required></div>
                     <div><label
-                            class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Phone</label><input
+                            class="block text-[10px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-1.5">Phone</label><input
                             type="tel" name="phone" class="fi"></div>
-                    <div><label class="block text-[10px] font-bold text-[#888] uppercase tracking-[.1em] mb-1.5">Message
+                    <div><label class="block text-[10px] font-bold text-[#857D6F] uppercase tracking-[.1em] mb-1.5">Message
                             / Asking Price</label><textarea name="message" class="fi" rows="4"
-                            placeholder="I'm interested in this work. Could you please provide pricing and availability?"></textarea>
+                            placeholder="I’m interested in this work. Could you please provide pricing and availability?"></textarea>
                     </div>
                     <div class="flex gap-3 pt-2">
                         <button type="submit" class="br flex-1">Send Enquiry</button>
@@ -786,776 +896,51 @@
 
     <div id="toast" class="toast">Enquiry sent successfully!</div>
 
+    <script id="artworksData" type="application/json">[{"id": 1, "t": "Trees reflection on the water", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "150 × 110 cm", "u": "./img/001.jpg", "p": ["#C0392B", "#E67E22", "#F39C12", "#8E44AD", "#2C3E50"]}, {"id": 2, "t": "Winter’s night", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "70 × 90 cm", "u": "./img/002.jpg", "p": ["#6C3483", "#2471A3", "#1E8449", "#784212", "#566573"]}, {"id": 3, "t": "The House of Memories", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "150 × 110 cm", "u": "./img/003.jpg", "p": ["#922B21", "#E67E22", "#7D3C98", "#2E86C1", "#1B1B1B"]}, {"id": 4, "t": "Thunderstorm", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "70 × 90 cm", "u": "./img/004.jpg", "p": ["#0A1F44", "#E63946", "#F4A261", "#7B2D8E", "#0D0D0D"]}, {"id": 5, "t": "Deep pink day", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "62 × 82 cm", "u": "./img/005.jpg", "p": ["#B71C1C", "#8E4585", "#5D4037", "#2E7D32", "#FFD600"]}, {"id": 6, "t": "The field", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "62 × 82 cm", "u": "./img/006.jpg", "p": ["#1565C0", "#42A5F5", "#F8BBD0", "#66BB6A", "#1B5E20"]}, {"id": 7, "t": "Under the sun", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "62 × 82 cm", "u": "./img/007.jpg", "p": ["#880E4F", "#F48FB1", "#D4A373", "#EF6C00", "#FFAB91"]}, {"id": 8, "t": "Horizon", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "62 × 82 cm", "u": "./img/008.jpg", "p": ["#1A237E", "#2E7D32", "#6A1B9A", "#5D4037", "#757575"]}, {"id": 9, "t": "The Wave", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "60 × 80 cm", "u": "./img/009.jpg", "p": ["#37474F", "#FF6F00", "#D32F2F", "#6D4C41", "#8D6E63"]}, {"id": 10, "t": "Sky", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "60 × 80 cm", "u": "./img/010.jpg", "p": ["#C62828", "#E65100", "#6A1B9A", "#FF8F00", "#AD1457"]}, {"id": 11, "t": "Early Winter", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/011.jpg", "p": ["#5D6D7E", "#1A1A1A", "#C0392B", "#D4A76A", "#784212"]}, {"id": 12, "t": "Reflection", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "60 × 125 cm", "u": "./img/012.jpg", "p": ["#E67E22", "#F39C12", "#2C3E50", "#1A5276", "#85C1E9"]}, {"id": 13, "t": "Morning", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "100 × 100 cm", "u": "./img/013.jpg", "p": ["#0D47A1", "#212121", "#FF6D00", "#424242", "#9E9E9E"]}, {"id": 14, "t": "Night", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "80 × 90 cm", "u": "./img/014.jpg", "p": ["#1A1A2E", "#4A148C", "#1B5E20", "#B71C1C", "#0D47A1"]}, {"id": 15, "t": "In the fog", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "70 × 50 cm", "u": "./img/015.jpg", "p": ["#9B59B6", "#E91E8C", "#2E86C1", "#1A1A1A", "#5B2C6F"]}, {"id": 16, "t": "The Park", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "120 × 80 cm", "u": "./img/016.jpg", "p": ["#000000", "#FDD835", "#FF6F00", "#7B1FA2", "#9E9D24"]}, {"id": 17, "t": "Purple Dragon", "c": "sculpt-animal", "y": "2025", "m": "Mixed media", "s": "80 × 80 cm", "u": "./img/017.jpg", "p": ["#E8507A", "#B8315C", "#1B2A4A", "#5C3D7A", "#2E6B4F", "#1A1A1A"]}, {"id": 18, "t": "Wooden Dragon", "c": "sculpt-animal", "y": "2025", "m": "Mixed media", "s": "90 × 70 cm", "u": "./img/018.jpg", "p": ["#8B6B3D", "#D4A847", "#C0392B", "#6B4423", "#3E3E3E"]}, {"id": 19, "t": "Moon night", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "140 × 200 cm", "u": "./img/019.jpg", "p": ["#1A2744", "#0D0D0D", "#2D5A3F", "#8B7D3C", "#1F3C2E"]}, {"id": 20, "t": "Autumn", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "60 × 80 cm", "u": "./img/020.jpg", "p": ["#0A0A0A", "#2E7D5B", "#3A5BA0", "#6A3D7A", "#1A2A20"]}, {"id": 21, "t": "Twin Dragons", "c": "sculpt-animal", "y": "2025", "m": "Mixed media", "s": "80 × 70 cm", "u": "./img/021.jpg", "p": ["#1A8A7A", "#2BB5A0", "#C0392B", "#8B2500", "#4A4A4A"]}, {"id": 22, "t": "Look up", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "50 × 40 cm", "u": "./img/022.jpg", "p": ["#2B5EA7", "#1B3D6F", "#1A1A1A", "#D4A97A", "#E8C9A0"]}, {"id": 23, "t": "Self-portrait #09", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "60 × 60 cm", "u": "./img/023.jpg", "p": ["#1A8A7A", "#2BB5A0", "#C0392B", "#8B2500", "#4A4A4A"]}, {"id": 24, "t": "Self-portrait #08", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "50 × 40 cm", "u": "./img/024.jpg", "p": ["#C0392B", "#1B1B1B", "#784212", "#F5CBA7", "#2C3E50"]}, {"id": 25, "t": "Self-portrait #07", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "50 × 50 cm", "u": "./img/025.jpg", "p": ["#B83227", "#8B2318", "#3E2A1A", "#C9A07A", "#E0BB95"]}, {"id": 26, "t": "My son", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "50 × 50 cm", "u": "./img/026.jpg", "p": ["#F2C94C", "#D4A520", "#1A1A1A", "#2C2C2C", "#C9A07A"]}, {"id": 27, "t": "Self-portrait #06", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "40 × 50 cm", "u": "./img/027.jpg", "p": ["#8B1A1A", "#C0392B", "#D4722A", "#E8943A", "#3E2A1A"]}, {"id": 28, "t": "The River", "c": "abstract", "y": "2025", "m": "Gouache on paper", "s": "42 × 60 cm", "u": "./img/028.jpg", "p": ["#3E2A1A", "#4A3B6B", "#6B4F8A", "#9B3A3A", "#2A2A2A"]}, {"id": 29, "t": "My daughter", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "50 × 50 cm", "u": "./img/029.jpg", "p": ["#6B2D8B", "#3E2723", "#1A1A1A", "#D4A574", "#8E44AD"]}, {"id": 30, "t": "The Dawn", "c": "abstract", "y": "2025", "m": "Gouache on paper", "s": "40 × 54 cm", "u": "./img/030.jpg", "p": ["#F4D03F", "#2E86C1", "#27AE60", "#8E44AD", "#1A1A1A"]}, {"id": 31, "t": "The field", "c": "abstract", "y": "2025", "m": "Gouache on paper", "s": "40 × 54 cm", "u": "./img/031.jpg", "p": ["#F0C040", "#7B2D8E", "#4A7C59", "#8B5E3C", "#2C2C2C"]}, {"id": 32, "t": "Self-portrait #05", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "40 × 30 cm", "u": "./img/032.jpg", "p": ["#C0392B", "#1A1A1A", "#8B0000", "#3D3D3D", "#E74C3C"]}, {"id": 33, "t": "The countryside", "c": "abstract", "y": "2025", "m": "Gouache on paper", "s": "42 × 60 cm", "u": "./img/033.jpg", "p": ["#7D3C98", "#F4D03F", "#2874A6", "#229954", "#1B2631"]}, {"id": 34, "t": "Beside the forest", "c": "abstract", "y": "2025", "m": "Gouache on paper", "s": "42 × 60 cm", "u": "./img/034.jpg", "p": ["#1C1C1C", "#2E4057", "#D4AC0D", "#6C3483", "#2C3E50"]}, {"id": 35, "t": "Father and son", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "60 × 80 cm", "u": "./img/035.jpg", "p": ["#E67E22", "#F1C40F", "#1B1B1B", "#2C3E50", "#D35400"]}, {"id": 36, "t": "Lady in orange", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "50 × 50 cm", "u": "./img/036.jpg", "p": ["#E67E22", "#1A1A1A", "#C68642", "#C0392B", "#F39C12"]}, {"id": 37, "t": "Sister and brother", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "60 × 80 cm", "u": "./img/037.jpg", "p": ["#B03A2E", "#1A1A1A", "#2E86C1", "#8B5E3C", "#922B21"]}, {"id": 38, "t": "Self-portrait #04", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "50 × 50 cm", "u": "./img/038.jpg", "p": ["#2471A3", "#D4A574", "#1A5276", "#C68642", "#5DADE2"]}, {"id": 39, "t": "Mother and son", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "60 × 80 cm", "u": "./img/039.jpg", "p": ["#2E86C1", "#1B1B1B", "#F5F0E8", "#7F8C8D", "#34495E"]}, {"id": 40, "t": "Self-portrait #03", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "70 × 55 cm", "u": "./img/040.jpg", "p": ["#7D3C98", "#1E4D2B", "#D4AC0D", "#8D5524", "#0D2818"]}, {"id": 41, "t": "My son #02", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "70 × 60 cm", "u": "./img/041.jpg", "p": ["#1A1A1A", "#E67E22", "#27AE60", "#C0392B", "#8B4513"]}, {"id": 42, "t": "Self-portrait #02", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "70 × 50 cm", "u": "./img/042.jpg", "p": ["#8B6914", "#1A3C6E", "#B39DDB", "#E8DCC8", "#2E4053"]}, {"id": 43, "t": "Self-portrait #01", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "50 × 50 cm", "u": "./img/043.jpg", "p": ["#C0392B", "#6B8E6B", "#4A4A4A", "#7B2D8E", "#2C2C2C"]}, {"id": 44, "t": "Spring snakes", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/044.jpg", "p": ["#F1C40F", "#E91E8C", "#27AE60", "#8E44AD", "#6B8E6B"]}, {"id": 45, "t": "Spring sky", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "155 × 250 cm", "u": "./img/045.jpg", "p": ["#0A3D0A", "#1B3A5C", "#0D0D0D", "#7DCEA0", "#2C4A2C"]}, {"id": 46, "t": "Blue morning", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "150 × 250 cm", "u": "./img/046.jpg", "p": ["#1A1A1A", "#6A1B9A", "#42A5F5", "#EC407A", "#5D4037"]}, {"id": 47, "t": "A pink day", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/047.jpg", "p": ["#F48FB1", "#FF8F00", "#29B6F6", "#2E7D32", "#7B1FA2"]}, {"id": 48, "t": "Lake surface", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "155 × 250 cm", "u": "./img/048.jpg", "p": ["#1B4F72", "#1E8449", "#1A1A1A", "#E74C3C", "#F9E79F"]}, {"id": 49, "t": "Brothers", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/049.jpg", "p": ["#E53935", "#43A047", "#9E9E9E", "#FDD835", "#1565C0"]}, {"id": 50, "t": "Triple melody", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/050.jpg", "p": ["#0A0A0A", "#F44336", "#2196F3", "#4CAF50", "#9C27B0"]}, {"id": 51, "t": "In the fog", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "150 × 250 cm", "u": "./img/051.jpg", "p": ["#E91E8C", "#C0392B", "#27AE60", "#1A1A1A", "#F48FB1"]}, {"id": 52, "t": "Hillside", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "155 × 250 cm", "u": "./img/052.jpg", "p": ["#0D0D0D", "#2E7D32", "#F9A825", "#D32F2F", "#424242"]}, {"id": 53, "t": "Hắc-Kim-Lam Serpents", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/053.jpg", "p": ["#8E44AD", "#E67E22", "#784212", "#6C3483", "#BDC3C7"]}, {"id": 54, "t": "Bạch-Lục-Lam Serpents", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/054.jpg", "p": ["#F8BBD0", "#1976D2", "#388E3C", "#7E57C2", "#C0C0C0"]}, {"id": 55, "t": "Edge of the forest", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "140 × 230 cm", "u": "./img/055.jpg", "p": ["#6A1B9A", "#F06292", "#42A5F5", "#1A1A1A", "#D32F2F", "#FF9800"]}, {"id": 56, "t": "Family", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/056.jpg", "p": ["#FFF9C4", "#8E24AA", "#1565C0", "#5D4037", "#EC407A"]}, {"id": 57, "t": "Tam xà", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/057.jpg", "p": ["#1565C0", "#C62828", "#FDD835", "#6A1B9A", "#212121"]}, {"id": 58, "t": "Dry stream", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "150 × 250 cm", "u": "./img/058.jpg", "p": ["#0D47A1", "#4A148C", "#B71C1C", "#1A1A1A", "#283593"]}, {"id": 59, "t": "Joyful", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/059.jpg", "p": ["#EF6C00", "#FDD835", "#FFFFFF", "#7B1FA2", "#1E88E5"]}, {"id": 60, "t": "Talk", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/060.jpg", "p": ["#E91E63", "#0D47A1", "#00695C", "#880E4F", "#263238"]}, {"id": 61, "t": "Đôi xà", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/061.jpg", "p": ["#C0392B", "#1ABC9C", "#F1C40F", "#2E86C1", "#1A1A1A"]}, {"id": 62, "t": "Duet", "c": "zodiac", "y": "2024", "m": "Acrylic on wood", "s": "ø 60 cm", "u": "./img/062.jpg", "p": ["#1565C0", "#E53935", "#FDD835", "#212121", "#43A047"]}, {"id": 63, "t": "Song xà", "c": "zodiac", "y": "2024", "m": "Acrylic on wood", "s": "ø 80 cm", "u": "./img/063.jpg", "p": ["#27AE60", "#C0392B", "#2E86C1", "#F1C40F", "#8E44AD"]}, {"id": 64, "t": "Lục xà, lam xà", "c": "zodiac", "y": "2024", "m": "Acrylic on wood", "s": "ø 60 cm", "u": "./img/064.jpg", "p": ["#1B4F72", "#27AE60", "#F1C40F", "#8E44AD", "#0D3B66"]}, {"id": 65, "t": "Couple", "c": "zodiac", "y": "2025", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/065.jpg", "p": ["#4A148C", "#000000", "#29B6F6", "#FFEE58", "#E91E63"]}, {"id": 66, "t": "Land", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/066.jpg", "p": ["#311B92", "#1B5E20", "#F9A825", "#4E342E", "#4527A0"]}, {"id": 67, "t": "Early morning", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "110 × 150 cm", "u": "./img/067.jpg", "p": ["#1A1A1A", "#37474F", "#1B5E20", "#546E7A", "#263238"]}, {"id": 68, "t": "Night Forest", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "110 × 150 cm", "u": "./img/068.jpg", "p": ["#1A1A1A", "#333333", "#8B4513", "#D2691E", "#4A4A4A"]}, {"id": 69, "t": "Winter rice field", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "90 × 120 cm", "u": "./img/069.jpg", "p": ["#F1C40F", "#2C3E50", "#27AE60", "#1A5276", "#F39C12"]}, {"id": 70, "t": "Late Afternoon", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "90 × 120 cm", "u": "./img/070.jpg", "p": ["#4A3728", "#1B4D3E", "#2C3E6B", "#5B2C6F", "#784212"]}, {"id": 71, "t": "Into the fog", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "110 × 150 cm", "u": "./img/071.jpg", "p": ["#2C3E50", "#1A1A1A", "#1E3A2F", "#4A235A", "#34495E"]}, {"id": 72, "t": "Water stream", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/072.jpg", "p": ["#0D0D0D", "#006D6F", "#D4AC0D", "#1A3C40", "#B7950B"]}, {"id": 73, "t": "Night storm", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "50 × 100 cm", "u": "./img/073.jpg", "p": ["#0B0C10", "#1B2838", "#C0392B", "#D4AC0D", "#2C3E50"]}, {"id": 74, "t": "Rain", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "50 × 100 cm", "u": "./img/074.jpg", "p": ["#5D4037", "#1A237E", "#6A1B9A", "#2E7D32", "#3E2723"]}, {"id": 75, "t": "The Light", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "50 × 100 cm", "u": "./img/075.jpg", "p": ["#000000", "#2ECC71", "#F1C40F", "#8E44AD", "#3498DB"]}, {"id": 76, "t": "The forest", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/076.jpg", "p": ["#0D0D0D", "#1B4332", "#2E1A47", "#1C2833", "#17202A"]}, {"id": 77, "t": "The night road", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/077.jpg", "p": ["#0D0D0D", "#4A148C", "#F39C12", "#E67E22", "#6A1B9A"]}, {"id": 78, "t": "Thunderstorm", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/078.jpg", "p": ["#1A237E", "#1A1A1A", "#6D4C41", "#F9A825", "#2E7D32", "#C62828"]}, {"id": 79, "t": "Rice fields", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/079.jpg", "p": ["#388E3C", "#795548", "#1565C0", "#FBC02D", "#33691E"]}, {"id": 80, "t": "Night", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/080.jpg", "p": ["#4A148C", "#757575", "#F9A825", "#6A1B9A", "#BDBDBD"]}, {"id": 81, "t": "Skyline", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "100 × 50 cm", "u": "./img/081.jpg", "p": ["#1565C0", "#2E7D32", "#6D4C41", "#6A1B9A", "#4CAF50"]}, {"id": 82, "t": "The sand road", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "100 × 50 cm", "u": "./img/082.jpg", "p": ["#9E9E9E", "#1A1A1A", "#F5F5F5", "#FFF9C4", "#0D47A1"]}, {"id": 83, "t": "Beside the sea", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "100 × 200 cm", "u": "./img/083.jpg", "p": ["#757575", "#8D6E63", "#F9A825", "#A1887F", "#616161"]}, {"id": 84, "t": "Dunes", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "110 × 160 cm", "u": "./img/084.jpg", "p": ["#BDBDBD", "#FFF9C4", "#66BB6A", "#37474F", "#E0E0E0"]}, {"id": 85, "t": "Azure Guardian", "c": "zodiac", "y": "2024", "m": "Mixed media", "s": "120 × 90 cm", "u": "./img/085.jpg", "p": ["#00897B", "#FFD54F", "#388E3C", "#1A1A1A", "#4DB6AC"]}, {"id": 86, "t": "Dancing Dragon", "c": "zodiac", "y": "2024", "m": "Acrylic on wood", "s": "ø 74 cm", "u": "./img/086.jpg", "p": ["#1B5E20", "#C62828", "#FFB300", "#5D4037", "#8D6E63"]}, {"id": 87, "t": "Sunrise", "c": "abstract", "y": "2024", "m": "Acrylic on canvas", "s": "80 × 100 cm", "u": "./img/087.jpg", "p": ["#1E88E5", "#4E342E", "#C62828", "#2E7D32", "#1A1A1A"]}, {"id": 88, "t": "Blue Dragon", "c": "zodiac", "y": "2024", "m": "Acrylic on wood", "s": "ø 68 cm", "u": "./img/088.jpg", "p": ["#1A1A1A", "#2E8B8B", "#808080", "#E91E8C", "#F4D03F"]}, {"id": 89, "t": "Mother Dragon", "c": "zodiac", "y": "2024", "m": "Acrylic on wood", "s": "ø 72 cm", "u": "./img/089.jpg", "p": ["#27AE60", "#E91E8C", "#F39C12", "#1A1A1A", "#3498DB"]}, {"id": 90, "t": "Dragon with jade ball", "c": "zodiac", "y": "2024", "m": "Acrylic on wood", "s": "ø 70 cm", "u": "./img/090.jpg", "p": ["#8E44AD", "#27AE60", "#E91E8C", "#F39C12", "#1A1A1A"]}, {"id": 91, "t": "Bính ngọ #07", "c": "zodiac", "y": "2026", "m": "Gouache on paper", "s": "39 × 54 cm", "u": "./img/091.jpg", "p": ["#2980B9", "#F48FB1", "#F4D03F", "#C0392B", "#95A5A6"]}, {"id": 92, "t": "Bính ngọ #06", "c": "zodiac", "y": "2026", "m": "Gouache on paper", "s": "41 × 60 cm", "u": "./img/092.jpg", "p": ["#8E44AD", "#E67E22", "#F48FB1", "#27AE60", "#C0392B"]}, {"id": 93, "t": "Mountain wind", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "110 × 160 cm", "u": "./img/093.jpg", "p": ["#1A1A1A", "#F4D03F", "#F48FB1", "#2980B9", "#27AE60"]}, {"id": 94, "t": "Bính ngọ #05", "c": "zodiac", "y": "2026", "m": "Gouache on paper", "s": "42 × 60 cm", "u": "./img/094.jpg", "p": ["#8E44AD", "#1A1A1A", "#27AE60", "#F4D03F", "#E67E22"]}, {"id": 95, "t": "Bính ngọ #04", "c": "zodiac", "y": "2026", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/095.jpg", "p": ["#F48FB1", "#2980B9", "#8E44AD", "#27AE60", "#F4D03F"]}, {"id": 96, "t": "Bính ngọ #03 Steeds", "c": "zodiac", "y": "2026", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/096.jpg", "p": ["#5D4037", "#7E57C2", "#27AE60", "#6B8E23", "#1B2631"]}, {"id": 97, "t": "The Edge of night", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "100 × 100 cm", "u": "./img/097.jpg", "p": ["#1A1A1A", "#F4D03F", "#2980B9", "#C0392B", "#E67E22"]}, {"id": 98, "t": "The place of return", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "100 × 160 cm", "u": "./img/098.jpg", "p": ["#1A1A1A", "#F4D03F", "#9B59B6", "#2E86C1", "#D5DBDB"]}, {"id": 99, "t": "Bính ngọ #02", "c": "zodiac", "y": "2026", "m": "Gouache on paper", "s": "40 × 55 cm", "u": "./img/099.jpg", "p": ["#27AE60", "#6E3B12", "#111111", "#E74C3C", "#F1C40F"]}, {"id": 100, "t": "Grass field", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "50 × 40 cm", "u": "./img/100.jpg", "p": ["#1B3A5C", "#D4AC0D", "#A04000", "#1E8449", "#0D0D0D"]}]</script>
+
     <script>
-        const D = [
-            {
-                id: 1, t: "Ephemeral Glow", c: "abstract", y: "2025", m: "Acrylic on canvas", s: "120 × 90 cm",
-                u: "./img/001.jpg",
-                p: ['#C0392B', '#E67E22', '#F39C12', '#8E44AD', '#2C3E50']
-            },
-            {
-                id: 2, t: "Chromatic Drift", c: "abstract", y: "2025", m: "Acrylic on canvas", s: "100 × 100 cm",
-                u: "./img/002.jpg",
-                p: ['#6C3483', '#2471A3', '#1E8449', '#784212', '#566573']
-            },
-            {
-                id: 3, t: "Silent Resonance", c: "abstract", y: "2025", m: "Acrylic on canvas", s: "150 × 100 cm",
-                u: "./img/003.jpg",
-                p: ['#922B21', '#E67E22', '#7D3C98', '#2E86C1', '#1B1B1B']
-            },
-            {
-                "id": 4,
-                "t": "Stratified Spectrum",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "140 × 90 cm",
-                "u": "./img/004.jpg",
-                "p": ["#0A1F44", "#E63946", "#F4A261", "#7B2D8E", "#0D0D0D"]
-            },
-            {
-                "id": 5,
-                "t": "Chromatic Ribbons",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 85 cm",
-                "u": "./img/005.jpg",
-                "p": ["#B71C1C", "#8E4585", "#5D4037", "#2E7D32", "#FFD600"]
-            },
-            {
-                "id": 6,
-                "t": "Azure and Verdant Layers",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 80 cm",
-                "u": "./img/006.jpg",
-                "p": ["#1565C0", "#42A5F5", "#F8BBD0", "#66BB6A", "#1B5E20"]
-            },
-            {
-                "id": 7,
-                "t": "Warm Cascading Strata",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "135 × 95 cm",
-                "u": "./img/007.jpg",
-                "p": ["#880E4F", "#F48FB1", "#D4A373", "#EF6C00", "#FFAB91"]
-            },
-            {
-                "id": 8,
-                "t": "Earthy Textured Bands",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "150 × 100 cm",
-                "u": "./img/008.jpg",
-                "p": ["#1A237E", "#2E7D32", "#6A1B9A", "#5D4037", "#757575"]
-            },
-            {
-                "id": 9,
-                "t": "Ember and Ash Stripes",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "145 × 90 cm",
-                "u": "./img/009.jpg",
-                "p": ["#37474F", "#FF6F00", "#D32F2F", "#6D4C41", "#8D6E63"]
-            },
-            {
-                "id": 10,
-                "t": "Inferno Horizon",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "140 × 95 cm",
-                "u": "./img/010.jpg",
-                "p": ["#C62828", "#E65100", "#6A1B9A", "#FF8F00", "#AD1457"]
-            },
-            {
-                id: 11, t: "Winter Branches", c: "abstract", y: "2025", m: "Acrylic on canvas", s: "150 × 100 cm",
-                u: "./img/011.jpg",
-                p: ['#5D6D7E', '#1A1A1A', '#C0392B', '#D4A76A', '#784212']
-            },
-            {
-                id: 12, t: "Reflected Horizons", c: "abstract", y: "2025", m: "Acrylic on canvas", s: "140 × 90 cm",
-                u: "./img/012.jpg",
-                p: ['#E67E22', '#F39C12', '#2C3E50', '#1A5276', '#85C1E9']
-            },
-            {
-                "id": 13,
-                "t": "Twilight Over Dark Waters",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 90 cm",
-                "u": "./img/013.jpg",
-                "p": ["#0D47A1", "#212121", "#FF6D00", "#424242", "#9E9E9E"]
-            },
-            {
-                "id": 14,
-                "t": "Misty Mountain Reflections",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "135 × 85 cm",
-                "u": "./img/014.jpg",
-                "p": ["#1A1A2E", "#4A148C", "#1B5E20", "#B71C1C", "#0D47A1"]
-            },
-            {
-                id: 15, t: "Magical Purple", c: "abstract", y: "2025", m: "Acrylic on canvas", s: "130 × 90 cm",
-                u: "./img/015.jpg",
-                p: ['#9B59B6', '#E91E8C', '#2E86C1', '#1A1A1A', '#5B2C6F']
-            },
-            {
-                "id": 16,
-                "t": "Nocturnal Forest Drips",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 80 cm",
-                "u": "./img/016.jpg",
-                "p": ["#000000", "#FDD835", "#FF6F00", "#7B1FA2", "#9E9D24"]
-            },
-            {
-                "id": 17,
-                "t": "Studio Resonance",
-                "c": "sculpt-animal",
-                "y": "2026",
-                "m": "Mixed media",
-                "s": "120 × 85 cm",
-                "u": "./img/017.jpg",
-                "p": ["#E8507A", "#B8315C", "#1B2A4A", "#5C3D7A", "#2E6B4F", "#1A1A1A"]
-            },
-            {
-                "id": 18,
-                "t": "Prickling Presence",
-                "c": "sculpt-animal",
-                "y": "2026",
-                "m": "Mixed media",
-                "s": "90 × 70 cm",
-                "u": "./img/018.jpg",
-                "p": ["#8B6B3D", "#D4A847", "#C0392B", "#6B4423", "#3E3E3E"]
-            },
-            {
-                "id": 19,
-                "t": "Silent Mountain Veil",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 100 cm",
-                "u": "./img/019.jpg",
-                "p": ["#1A2744", "#0D0D0D", "#2D5A3F", "#8B7D3C", "#1F3C2E"]
-            },
-            {
-                "id": 20,
-                "t": "Branches Over Still Water",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 90 cm",
-                "u": "./img/020.jpg",
-                "p": ["#0A0A0A", "#2E7D5B", "#3A5BA0", "#6A3D7A", "#1A2A20"]
-            },
-            {
-                "id": 21,
-                "t": "Twin Creatures of the Deep",
-                "c": "sculpt-animal",
-                "y": "2026",
-                "m": "Mixed media",
-                "s": "110 × 80 cm",
-                "u": "./img/021.jpg",
-                "p": ["#1A8A7A", "#2BB5A0", "#C0392B", "#8B2500", "#4A4A4A"]
-            },
-            {
-                "id": 22,
-                "t": "Veiled Profile in Blue",
-                "c": "portrait",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "80 × 110 cm",
-                "u": "./img/022.jpg",
-                "p": ["#2B5EA7", "#1B3D6F", "#1A1A1A", "#D4A97A", "#E8C9A0"]
-            },
-            {
-                id: 24, t: "The Seer", c: "portrait", y: "2025", m: "Acrylic on canvas", s: "80 × 100 cm",
-                u: "./img/024.jpg",
-                p: ['#C0392B', '#1B1B1B', '#784212', '#F5CBA7', '#2C3E50']
-            },
-            {
-                "id": 25,
-                "t": "The Bald Man in Red",
-                "c": "portrait",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "85 × 115 cm",
-                "u": "./img/025.jpg",
-                "p": ["#B83227", "#8B2318", "#3E2A1A", "#C9A07A", "#E0BB95"]
-            },
-            {
-                "id": 26,
-                "t": "Yellow Halo Portrait",
-                "c": "portrait",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "80 × 110 cm",
-                "u": "./img/026.jpg",
-                "p": ["#F2C94C", "#D4A520", "#1A1A1A", "#2C2C2C", "#C9A07A"]
-            },
-            {
-                "id": 27,
-                "t": "Ember Portrait",
-                "c": "portrait",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "85 × 110 cm",
-                "u": "./img/027.jpg",
-                "p": ["#8B1A1A", "#C0392B", "#D4722A", "#E8943A", "#3E2A1A"]
-            },
-            {
-                "id": 28,
-                "t": "The Winding Path",
-                "c": "abstract",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "140 × 90 cm",
-                "u": "./img/028.jpg",
-                "p": ["#3E2A1A", "#4A3B6B", "#6B4F8A", "#9B3A3A", "#2A2A2A"]
-            },
-            { "id": 29, "t": "Purple Reverie", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "80 × 60 cm", "u": "./img/029.jpg", "p": ['#6B2D8B', '#3E2723', '#1A1A1A', '#D4A574', '#8E44AD'] },
-            { "id": 30, "t": "Chromatic Burst", "c": "abstract", "y": "2023", "m": "Acrylic on canvas", "s": "120 × 90 cm", "u": "./img/030.jpg", "p": ['#F4D03F', '#2E86C1', '#27AE60', '#8E44AD', '#1A1A1A'] },
-            { "id": 31, "t": "Terrain of Dreams", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "130 × 80 cm", "u": "./img/031.jpg", "p": ['#F0C040', '#7B2D8E', '#4A7C59', '#8B5E3C', '#2C2C2C'] },
-            { "id": 32, "t": "Silhouette in Red", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "80 × 60 cm", "u": "./img/032.jpg", "p": ['#C0392B', '#1A1A1A', '#8B0000', '#3D3D3D', '#E74C3C'] },
-            { "id": 33, "t": "Impasto Horizon", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "130 × 85 cm", "u": "./img/033.jpg", "p": ['#7D3C98', '#F4D03F', '#2874A6', '#229954', '#1B2631'] },
-            { "id": 34, "t": "Nocturnal Fragments", "c": "abstract", "y": "2025", "m": "Acrylic on canvas", "s": "110 × 90 cm", "u": "./img/034.jpg", "p": ['#1C1C1C', '#2E4057', '#D4AC0D', '#6C3483', '#2C3E50'] },
-            {
-                id: 35, t: "Standing Together", c: "portrait", y: "2025", m: "Acrylic on canvas", s: "90 × 120 cm",
-                u: "./img/035.jpg",
-                p: ['#E67E22', '#F1C40F', '#1B1B1B', '#2C3E50', '#D35400']
-            },
-            { "id": 36, "t": "Amber Gaze", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "80 × 60 cm", "u": "./img/036.jpg", "p": ['#E67E22', '#1A1A1A', '#C68642', '#C0392B', '#F39C12'] },
-            { "id": 37, "t": "Duality in Crimson", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "100 × 70 cm", "u": "./img/037.jpg", "p": ['#B03A2E', '#1A1A1A', '#2E86C1', '#8B5E3C', '#922B21'] },
-            { "id": 38, "t": "Blue Contemplation", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "80 × 60 cm", "u": "./img/038.jpg", "p": ['#2471A3', '#D4A574', '#1A5276', '#C68642', '#5DADE2'] },
-            {
-                id: 39, t: "Encounter", c: "portrait", y: "2026", m: "Acrylic on canvas", s: "100 × 80 cm",
-                u: "./img/039.jpg",
-                p: ['#2E86C1', '#1B1B1B', '#F5F0E8', '#7F8C8D', '#34495E']
-            },
-            { "id": 40, "t": "Emerald and Amethyst", "c": "portrait", "y": "2025", "m": "Acrylic on canvas", "s": "80 × 60 cm", "u": "./img/040.jpg", "p": ['#7D3C98', '#1E4D2B', '#D4AC0D', '#8D5524', '#0D2818'] },
-            {
-                "id": 41,
-                "t": "Vivid Fish Portrait",
-                "c": "portrait",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "80 × 100 cm",
-                "u": "./img/041.jpg",
-                "p": ["#1A1A1A", "#E67E22", "#27AE60", "#C0392B", "#8B4513"]
-            },
-            {
-                "id": 42,
-                "t": "Side Profile in Cool Tones",
-                "c": "portrait",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "90 × 70 cm",
-                "u": "./img/042.jpg",
-                "p": ["#8B6914", "#1A3C6E", "#B39DDB", "#E8DCC8", "#2E4053"]
-            },
-            {
-                "id": 43,
-                "t": "Gray-Green Gaze",
-                "c": "portrait",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "100 × 80 cm",
-                "u": "./img/043.jpg",
-                "p": ["#C0392B", "#6B8E6B", "#4A4A4A", "#7B2D8E", "#2C2C2C"]
-            },
-            {
-                id: 44, t: "Winding Forms", c: "zodiac", y: "2025", m: "Acrylic on canvas", s: "100 × 120 cm",
-                u: "./img/044.jpg",
-                p: ['#F1C40F', '#E91E8C', '#27AE60', '#8E44AD', '#6B8E6B']
-            },
-            {
-                "id": 45,
-                "t": "Enchanted Wetland",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 90 cm",
-                "u": "./img/045.jpg",
-                "p": ["#0A3D0A", "#1B3A5C", "#0D0D0D", "#7DCEA0", "#2C4A2C"]
-            },
-            {
-                "id": 46,
-                "t": "Dreamlike Forest",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 100 cm",
-                "u": "./img/046.jpg",
-                "p": ["#1A1A1A", "#6A1B9A", "#42A5F5", "#EC407A", "#5D4037"]
-            },
-            {
-                "id": 47,
-                "t": "Colorful Snake Dance",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "90 × 120 cm",
-                "u": "./img/047.jpg",
-                "p": ["#F48FB1", "#FF8F00", "#29B6F6", "#2E7D32", "#7B1FA2"]
-            },
-            {
-                id: 48, t: "Mysterious Waters", c: "abstract", y: "2025", m: "Acrylic on canvas", s: "120 × 80 cm",
-                u: "./img/048.jpg",
-                p: ['#1B4F72', '#1E8449', '#1A1A1A', '#E74C3C', '#F9E79F']
-            },
-            {
-                "id": 49,
-                "t": "Geometric Serpents",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "100 × 80 cm",
-                "u": "./img/049.jpg",
-                "p": ["#E53935", "#43A047", "#9E9E9E", "#FDD835", "#1565C0"]
-            },
-            {
-                "id": 50,
-                "t": "Neon Serpents on Black",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "110 × 90 cm",
-                "u": "./img/050.jpg",
-                "p": ["#0A0A0A", "#F44336", "#2196F3", "#4CAF50", "#9C27B0"]
-            },
-            {
-                id: 51, t: "Dripping Spectrum", c: "abstract", y: "2026", m: "Acrylic on canvas", s: "130 × 90 cm",
-                u: "./img/051.jpg",
-                p: ['#E91E8C', '#C0392B', '#27AE60', '#1A1A1A', '#F48FB1']
-            },
-            {
-                "id": 52,
-                "t": "Explosive Abstract Tension",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "140 × 110 cm",
-                "u": "./img/052.jpg",
-                "p": ["#0D0D0D", "#2E7D32", "#F9A825", "#D32F2F", "#424242"]
-            },
-            {
-                id: 53, t: "Entwined Serpents", c: "zodiac", y: "2025", m: "Acrylic on canvas", s: "110 × 80 cm",
-                u: "./img/053.jpg",
-                p: ['#8E44AD', '#E67E22', '#784212', '#6C3483', '#BDC3C7']
-            },
-            {
-                "id": 54,
-                "t": "Silver Snakes on Pink",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "90 × 120 cm",
-                "u": "./img/054.jpg",
-                "p": ["#F8BBD0", "#1976D2", "#388E3C", "#7E57C2", "#C0C0C0"]
-            },
-            {
-                "id": 55,
-                "t": "Crimson Dusk Drip",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 90 cm",
-                "u": "./img/055.jpg",
-                "p": ["#6A1B9A", "#F06292", "#42A5F5", "#1A1A1A", "#D32F2F", "#FF9800"]
-            },
-            {
-                "id": 56,
-                "t": "Intertwined Chromatic Serpents",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "100 × 80 cm",
-                "u": "./img/056.jpg",
-                "p": ["#FFF9C4", "#8E24AA", "#1565C0", "#5D4037", "#EC407A"]
-            },
-            {
-                "id": 57,
-                "t": "Geometric Serpents and Fish",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "120 × 90 cm",
-                "u": "./img/057.jpg",
-                "p": ["#1565C0", "#C62828", "#FDD835", "#6A1B9A", "#212121"]
-            },
-            {
-                "id": 58,
-                "t": "Mysterious Night Landscape",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "150 × 100 cm",
-                "u": "./img/058.jpg",
-                "p": ["#0D47A1", "#4A148C", "#B71C1C", "#1A1A1A", "#283593"]
-            },
-            {
-                "id": 59,
-                "t": "Geometric Amber Serpent",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "100 × 80 cm",
-                "u": "./img/059.jpg",
-                "p": ["#EF6C00", "#FDD835", "#FFFFFF", "#7B1FA2", "#1E88E5"]
-            },
-            {
-                "id": 60,
-                "t": "Winding Azure and Rose",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "110 × 90 cm",
-                "u": "./img/060.jpg",
-                "p": ["#E91E63", "#0D47A1", "#00695C", "#880E4F", "#263238"]
-            },
-            {
-                id: 61, t: "Crimson Serpent", c: "zodiac", y: "2025", m: "Acrylic on canvas", s: "90 × 120 cm",
-                u: "./img/061.jpg",
-                p: ['#C0392B', '#1ABC9C', '#F1C40F', '#2E86C1', '#1A1A1A']
-            },
-            {
-                "id": 62,
-                "t": "Circular Serpent Duo",
-                "c": "zodiac",
-                "y": "2024",
-                "m": "Acrylic on wood",
-                "s": "80 × 80 cm",
-                "u": "./img/062.jpg",
-                "p": ["#1565C0", "#E53935", "#FDD835", "#212121", "#43A047"]
-            },
-            {
-                id: 63, t: "Serpent Mandala", c: "zodiac", y: "2025", m: "Acrylic on wood", s: "Ø 80 cm",
-                u: "./img/063.jpg",
-                p: ['#27AE60', '#C0392B', '#2E86C1', '#F1C40F', '#8E44AD']
-            },
-            {
-                id: 64, t: "Blue Duality", c: "zodiac", y: "2025", m: "Acrylic on wood", s: "Ø 80 cm",
-                u: "./img/064.jpg",
-                p: ['#1B4F72', '#27AE60', '#F1C40F', '#8E44AD', '#0D3B66']
-            },
-            {
-                "id": 65,
-                "t": "Ornate Purple Serpent",
-                "c": "zodiac",
-                "y": "2025",
-                "m": "Acrylic on canvas",
-                "s": "120 × 90 cm",
-                "u": "./img/065.jpg",
-                "p": ["#4A148C", "#000000", "#29B6F6", "#FFEE58", "#E91E63"]
-            },
-            {
-                "id": 66,
-                "t": "Abstract Strata Horizon",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "140 × 90 cm",
-                "u": "./img/066.jpg",
-                "p": ["#311B92", "#1B5E20", "#F9A825", "#4E342E", "#4527A0"]
-            },
-            {
-                "id": 67,
-                "t": "Barren Trees Reflection",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 90 cm",
-                "u": "./img/067.jpg",
-                "p": ["#1A1A1A", "#37474F", "#1B5E20", "#546E7A", "#263238"]
-            },
-            {
-                "id": 68,
-                "t": "Shadowed Canopy",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 80 cm",
-                "u": "./img/068.jpg",
-                "p": ["#1A1A1A", "#333333", "#8B4513", "#D2691E", "#4A4A4A"]
-            },
-            {
-                "id": 69,
-                "t": "Vibrant Terrain",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 90 cm",
-                "u": "./img/069.jpg",
-                "p": ["#F1C40F", "#2C3E50", "#27AE60", "#1A5276", "#F39C12"]
-            },
-            {
-                "id": 70,
-                "t": "Chromatic Strata",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "140 × 100 cm",
-                "u": "./img/070.jpg",
-                "p": ["#4A3728", "#1B4D3E", "#2C3E6B", "#5B2C6F", "#784212"]
-            },
-            {
-                "id": 71,
-                "t": "Verdant Twilight",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "90 × 120 cm",
-                "u": "./img/071.jpg",
-                "p": ["#2C3E50", "#1A1A1A", "#1E3A2F", "#4A235A", "#34495E"]
-            },
-            {
-                "id": 72,
-                "t": "Aureate Rift",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 90 cm",
-                "u": "./img/072.jpg",
-                "p": ["#0D0D0D", "#006D6F", "#D4AC0D", "#1A3C40", "#B7950B"]
-            },
-            {
-                "id": 73,
-                "t": "Midnight Sparks",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "100 × 100 cm",
-                "u": "./img/073.jpg",
-                "p": ["#0B0C10", "#1B2838", "#C0392B", "#D4AC0D", "#2C3E50"]
-            },
-            {
-                "id": 74,
-                "t": "Woven Spectrum",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "110 × 80 cm",
-                "u": "./img/074.jpg",
-                "p": ["#5D4037", "#1A237E", "#6A1B9A", "#2E7D32", "#3E2723"]
-            },
-            {
-                "id": 75,
-                "t": "Chromatic Forest",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "90 × 130 cm",
-                "u": "./img/075.jpg",
-                "p": ["#000000", "#2ECC71", "#F1C40F", "#8E44AD", "#3498DB"]
-            },
-            {
-                "id": 76,
-                "t": "Deep Veil",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 85 cm",
-                "u": "./img/076.jpg",
-                "p": ["#0D0D0D", "#1B4332", "#2E1A47", "#1C2833", "#17202A"]
-            },
-            {
-                "id": 77,
-                "t": "Luminous Fracture",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 95 cm",
-                "u": "./img/077.jpg",
-                "p": ["#0D0D0D", "#4A148C", "#F39C12", "#E67E22", "#6A1B9A"]
-            },
-            { "id": 78, "t": "Chromatic Drift", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "120 × 80 cm", "u": "./img/078.jpg", "p": ["#1A237E", "#1A1A1A", "#6D4C41", "#F9A825", "#2E7D32", "#C62828"] },
-            { "id": 79, "t": "Verdant Echoes", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "100 × 80 cm", "u": "./img/079.jpg", "p": ["#388E3C", "#795548", "#1565C0", "#FBC02D", "#33691E"] },
-            { "id": 80, "t": "Violet Terrain", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "110 × 80 cm", "u": "./img/080.jpg", "p": ["#4A148C", "#757575", "#F9A825", "#6A1B9A", "#BDBDBD"] },
-            { "id": 81, "t": "Mountain Reverie", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "120 × 90 cm", "u": "./img/081.jpg", "p": ["#1565C0", "#2E7D32", "#6D4C41", "#6A1B9A", "#4CAF50"] },
-            { "id": 82, "t": "Obsidian Whisper", "c": "abstract", "y": "2026", "m": "Oil in canvas", "s": "100 × 100 cm", "u": "./img/082.jpg", "p": ["#9E9E9E", "#1A1A1A", "#F5F5F5", "#FFF9C4", "#0D47A1"] },
-            { "id": 83, "t": "Earthen Haze", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "90 × 70 cm", "u": "./img/083.jpg", "p": ["#757575", "#8D6E63", "#F9A825", "#A1887F", "#616161"] },
-            { "id": 84, "t": "Pale Strata", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "100 × 80 cm", "u": "./img/084.jpg", "p": ["#BDBDBD", "#FFF9C4", "#66BB6A", "#37474F", "#E0E0E0"] },
-            { "id": 85, "t": "Azure Guardian", "c": "zodiac", "y": "2026", "m": "Mixed media", "s": "35 × 50 cm", "u": "./img/085.jpg", "p": ["#00897B", "#FFD54F", "#388E3C", "#1A1A1A", "#4DB6AC"] },
-            { "id": 86, "t": "Dragon Seal", "c": "zodiac", "y": "2024", "m": "Acrylic on wood", "s": "25 × 40 cm", "u": "./img/086.jpg", "p": ["#1B5E20", "#C62828", "#FFB300", "#5D4037", "#8D6E63"] },
-            { "id": 87, "t": "Crimson Ridge", "c": "abstract", "y": "2026", "m": "Acrylic on canvas", "s": "120 × 90 cm", "u": "./img/087.jpg", "p": ["#1E88E5", "#4E342E", "#C62828", "#2E7D32", "#1A1A1A"] },
-            {
-                "id": 88,
-                "t": "Chromatic Dragon",
-                "c": "zodiac",
-                "y": "2024",
-                "m": "Acrylic on wood",
-                "s": "60 × 60 cm",
-                "u": "./img/088.jpg",
-                "p": ["#1A1A1A", "#2E8B8B", "#808080", "#E91E8C", "#F4D03F"]
-            },
-            {
-                "id": 89,
-                "t": "Verdant Serpent",
-                "c": "zodiac",
-                "y": "2024",
-                "m": "Acrylic on wood",
-                "s": "55 × 55 cm",
-                "u": "./img/089.jpg",
-                "p": ["#27AE60", "#E91E8C", "#F39C12", "#1A1A1A", "#3498DB"]
-            },
-            {
-                "id": 90,
-                "t": "Amethyst Guardian",
-                "c": "zodiac",
-                "y": "2024",
-                "m": "Acrylic on wood",
-                "s": "70 × 50 cm",
-                "u": "./img/090.jpg",
-                "p": ["#8E44AD", "#27AE60", "#E91E8C", "#F39C12", "#1A1A1A"]
-            },
-            {
-                "id": 91,
-                "t": "Galloping in Blue",
-                "c": "zodiac",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "130 × 90 cm",
-                "u": "./img/091.jpg",
-                "p": ["#2980B9", "#F48FB1", "#F4D03F", "#C0392B", "#95A5A6"]
-            },
-            {
-                "id": 92,
-                "t": "Dream Pair",
-                "c": "zodiac",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 80 cm",
-                "u": "./img/092.jpg",
-                "p": ["#8E44AD", "#E67E22", "#F48FB1", "#27AE60", "#C0392B"]
-            },
-            {
-                "id": 93,
-                "t": "Chromatic Grid",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "100 × 100 cm",
-                "u": "./img/093.jpg",
-                "p": ["#1A1A1A", "#F4D03F", "#F48FB1", "#2980B9", "#27AE60"]
-            },
-            {
-                "id": 94,
-                "t": "Violet Equines",
-                "c": "zodiac",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 85 cm",
-                "u": "./img/094.jpg",
-                "p": ["#8E44AD", "#1A1A1A", "#27AE60", "#F4D03F", "#E67E22"]
-            },
-            {
-                "id": 95,
-                "t": "Triad of Hues",
-                "c": "zodiac",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "110 × 80 cm",
-                "u": "./img/095.jpg",
-                "p": ["#F48FB1", "#2980B9", "#8E44AD", "#27AE60", "#F4D03F"]
-            },
-            {
-                "id": 96,
-                "t": "Twilight Steeds",
-                "c": "zodiac",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 85 cm",
-                "u": "./img/096.jpg",
-                "p": ["#5D4037", "#7E57C2", "#27AE60", "#6B8E23", "#1B2631"]
-            },
-            {
-                "id": 97,
-                "t": "Chromatic Strata",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "100 × 70 cm",
-                "u": "./img/097.jpg",
-                "p": ["#1A1A1A", "#F4D03F", "#2980B9", "#C0392B", "#E67E22"]
-            },
-            {
-                "id": 98,
-                "t": "Chromatic Lattice",
-                "c": "abstract",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "90 × 90 cm",
-                "u": "./img/098.jpg",
-                "p": [
-                    "#1A1A1A",
-                    "#F4D03F",
-                    "#9B59B6",
-                    "#2E86C1",
-                    "#D5DBDB"
-                ]
-            },
-            {
-                "id": 99,
-                "t": "Twin Steeds",
-                "c": "zodiac",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "120 × 80 cm",
-                "u": "./img/099.jpg",
-                "p": [
-                    "#27AE60",
-                    "#6E3B12",
-                    "#111111",
-                    "#E74C3C",
-                    "#F1C40F"
-                ]
-            },
-            {
-                "id": 100,
-                "t": "Stratified Horizon",
-                "c": "landscape",
-                "y": "2026",
-                "m": "Acrylic on canvas",
-                "s": "140 × 70 cm",
-                "u": "./img/100.jpg",
-                "p": [
-                    "#1B3A5C",
-                    "#D4AC0D",
-                    "#A04000",
-                    "#1E8449",
-                    "#0D0D0D"
-                ]
-            },
-
-
-        ];
+        let D = [];
 
         const CL = { 'abstract': 'Painting — Abstract', 'portrait': 'Painting — Portrait', 'zodiac': 'Painting — Zodiac', 'sculpt-animal': 'Sculpture — Animals' };
 
-        // Gallery render
         const gal = document.getElementById('gal'), emp = document.getElementById('emp');
-        gal.innerHTML = D.map((a, i) => `<div class="mi${i >= 30 ? ' out' : ''}" data-c="${a.c}" data-y="${a.y}" data-m="${a.m}" data-id="${a.id}" style="animation-delay:${i * 30}ms"><div class="cursor-pointer" onclick="oLb(${a.id})"><img src="${a.u}" alt="${a.t}" loading="lazy" draggable="false"></div></div>`).join('');
-
-        // Dropdown
         const aS = document.getElementById('aSel');
-        D.forEach(a => { const o = document.createElement('option'); o.value = a.id; o.textContent = `${a.t} (${a.y})`; aS.appendChild(o) });
 
-        // Filters — toggle behavior, no "All"
         let fC = null, fY = null, fM = null;
-        const cL = document.querySelectorAll('[data-fc]'), yL = document.querySelectorAll('[data-fy]'), mL = document.querySelectorAll('[data-fm]');
-        cL.forEach(l => l.addEventListener('click', () => { fC = fC === l.dataset.fc ? null : l.dataset.fc; cL.forEach(x => x.classList.toggle('on', x.dataset.fc === fC)); dF() }));
-        yL.forEach(l => l.addEventListener('click', () => { fY = fY === l.dataset.fy ? null : l.dataset.fy; yL.forEach(x => x.classList.toggle('on', x.dataset.fy === fY)); dF() }));
-        mL.forEach(l => l.addEventListener('click', () => { fM = fM === l.dataset.fm ? null : l.dataset.fm; mL.forEach(x => x.classList.toggle('on', x.dataset.fm === fM)); dF() }));
+        let cL, yL, mL;
+
+        function init() {
+            // Gallery render
+            gal.innerHTML = D.map((a, i) => `<div class="mi${i >= 30 ? ' out' : ''}" data-c="${a.c}" data-y="${a.y}" data-m="${a.m}" data-id="${a.id}" style="animation-delay:${i * 30}ms"><div class="cursor-pointer" onclick="oLb(${a.id})"><img src="${a.u}" alt="${a.t}" loading="lazy" draggable="false"></div></div>`).join('');
+
+            // Dropdown
+            D.forEach(a => { const o = document.createElement('option'); o.value = a.id; o.textContent = `${a.t} (${a.y})`; aS.appendChild(o) });
+
+            // Filters — toggle behavior, no "All"
+            cL = document.querySelectorAll('[data-fc]'); yL = document.querySelectorAll('[data-fy]'); mL = document.querySelectorAll('[data-fm]');
+            cL.forEach(l => l.addEventListener('click', () => { fC = fC === l.dataset.fc ? null : l.dataset.fc; cL.forEach(x => x.classList.toggle('on', x.dataset.fc === fC)); dF() }));
+            yL.forEach(l => l.addEventListener('click', () => { fY = fY === l.dataset.fy ? null : l.dataset.fy; yL.forEach(x => x.classList.toggle('on', x.dataset.fy === fY)); dF() }));
+            mL.forEach(l => l.addEventListener('click', () => { fM = fM === l.dataset.fm ? null : l.dataset.fm; mL.forEach(x => x.classList.toggle('on', x.dataset.fm === fM)); dF() }));
+        }
+
+        // Try external JSON first (works over HTTP). Fall back to the embedded
+        // copy when the file can't be fetched (e.g. opened via file://).
+        function loadData(cb) {
+            fetch('artworks.json')
+                .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+                .then(cb)
+                .catch(() => {
+                    console.warn('artworks.json not reachable, using embedded data.');
+                    try {
+                        cb(JSON.parse(document.getElementById('artworksData').textContent));
+                    } catch (e) {
+                        console.error('Failed to load artworks:', e);
+                        emp.classList.remove('hidden');
+                        emp.querySelector('p').textContent = 'Failed to load artworks.';
+                    }
+                });
+        }
+        loadData(data => { D = data; init(); });
 
         function dF() {
             let n = 0;
@@ -1587,7 +972,7 @@
 
         // Enquiry popup
         const eqP = document.getElementById('eqP'), eqAr = document.getElementById('eqAr');
-        document.getElementById('lbEq').addEventListener('click', () => { const a = lF[lI]; if (!a) return; eqAr.textContent = `Re: ${a.t} (${a.y}) — ${a.m}, ${a.sz}`; eqP.classList.add('on') });
+        document.getElementById('lbEq').addEventListener('click', () => { const a = lF[lI]; if (!a) return; eqAr.textContent = `Re: ${a.t} (${a.y}) — ${a.m}, ${a.s}`; eqP.classList.add('on') });
         document.getElementById('clEq').addEventListener('click', () => eqP.classList.remove('on'));
         document.getElementById('cnEq').addEventListener('click', () => eqP.classList.remove('on'));
         eqP.addEventListener('click', e => { if (e.target === eqP) eqP.classList.remove('on') });
